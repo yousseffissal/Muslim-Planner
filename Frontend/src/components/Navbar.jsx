@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 
 const links = [
     { name: 'Dashboard', path: '/' },
@@ -29,13 +29,17 @@ function Navbar() {
                     {/* Desktop Links */}
                     <div className="hidden md:flex space-x-8 text-gray-700 font-medium">
                         {links.map((link) => (
-                            <Link
+                            <NavLink
                                 key={link.name}
                                 to={link.path}
-                                className="hover:text-green-600 transition"
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? "text-green-600 font-semibold"
+                                        : "hover:text-green-600 transition"
+                                }
                             >
                                 {link.name}
-                            </Link>
+                            </NavLink>
                         ))}
                     </div>
 
@@ -66,14 +70,18 @@ function Navbar() {
                 <div className="md:hidden bg-white border-t border-green-100 shadow-md">
                     <div className="flex flex-col space-y-4 p-4 text-gray-700 font-medium">
                         {links.map((link) => (
-                            <Link
+                            <NavLink
                                 key={link.name}
                                 to={link.path}
-                                className="hover:text-green-600 transition"
-                                onClick={() => setIsOpen(false)} // يغلق القائمة عند الضغط
+                                onClick={() => setIsOpen(false)}
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? "text-green-600 font-semibold"
+                                        : "hover:text-green-600 transition"
+                                }
                             >
                                 {link.name}
-                            </Link>
+                            </NavLink>
                         ))}
 
                         <button className="bg-green-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-700 transition">
