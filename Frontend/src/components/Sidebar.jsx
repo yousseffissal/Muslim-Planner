@@ -30,7 +30,7 @@ function Sidebar() {
             style={{ display: isVisible ? 'flex' : 'none' }}
         >
 
-            <h2 className="text-xl font-bold text-green-700 mb-10">
+            <h2 className="text-xl font-bold text-green-700 mb-5">
                 Navigation
             </h2>
 
