@@ -22,7 +22,7 @@ function Navbar() {
                     </span>
 
                     {/* Desktop Links */}
-                    <div className="hidden md:flex space-x-8 text-gray-700 font-medium">
+                    <div className="hidden navbar:flex space-x-8 text-gray-700 font-medium">
                         {links.slice(0, 4).map((link) => (
                             <NavLink
                                 key={link.name}

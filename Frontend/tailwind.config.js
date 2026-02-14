@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       screens: {
-        'WelcomeB': '407px'
+        'WelcomeB': '407px',
+        'navbar': '833px'
       },
     },
   },
