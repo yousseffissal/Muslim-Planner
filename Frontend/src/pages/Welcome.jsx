@@ -10,12 +10,12 @@ function Welcome() {
 
                     {/* Title */}
                     <h1 className="text-4xl md:text-5xl font-extrabold text-green-700 mb-4">
-                        Muslim Planner أهلاً وسهلاً بك في
+                        Welcome to Muslim Planner
                     </h1>
 
                     {/* Subtitle */}
                     <p className="text-gray-700 text-lg md:text-xl mb-6">
-                        تطبيقك اليومي الذي يساعدك على تنظيم عباداتك، أذكارك، قراءة القرآن، وإدارة مهامك اليومية بسهولة وراحة
+                        Your daily app that helps you organize your worship, remembrance (adhkar), Quran reading, and manage your daily tasks with ease and comfort.
                     </p>
 
                     {/* Buttons */}
@@ -24,11 +24,11 @@ function Welcome() {
                             <Link
                                 to={'/prayer-times'}
                             >
-                                ابدأ اليوم
+                                Start Your Day
                             </Link>
                         </button>
                         <button className="bg-white border border-green-600 text-green-600 px-6 py-3 rounded-lg shadow-md hover:bg-green-50 transition">
-                            تعرف على المزايا
+                            Explore Features
                         </button>
                     </div>
 

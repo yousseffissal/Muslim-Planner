@@ -24,11 +24,11 @@ function AdhanTime() {
         <div className="w-full max-w-xl rounded-2xl bg-white p-8 md:shadow-2xl">
 
           <h1 className="text-3xl font-bold text-center text-red-800 mb-2">
-            🕌 Adhan Application
+            🕌 Adhan Times
           </h1>
 
           <p className="text-center text-gray-500 mb-6">
-            Enter a city name to get today's prayer times
+            Enter a city name to get today's or any day prayer times
           </p>
 
           {/* City Input */}
@@ -72,7 +72,7 @@ function AdhanTime() {
           </button>
 
           {/* Results Area */}
-          <div className="min-h-[150px]">
+          <div>
 
             {/* Loader */}
             {loading && (
@@ -88,7 +88,7 @@ function AdhanTime() {
                     {error}
                   </p>
                 )}
-
+                
                 {successMsg && (
                   <p className="text-green-600 bg-green-50 border border-green-200 rounded-lg p-3 mb-4 text-center">
                     {successMsg}

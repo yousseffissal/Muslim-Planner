@@ -1,5 +1,5 @@
 import { useRouteError, isRouteErrorResponse } from "react-router-dom";
-import errorImage from "../assets/error404.jpg"; 
+import errorImage from "../assets/error404.jpg";
 
 function ErrorPage() {
     const error = useRouteError();
@@ -11,16 +11,16 @@ function ErrorPage() {
         title = `${error.status} ${error.statusText}`;
 
         if (error.status === 404) {
-            message = "الصفحة التي تحاول الوصول إليها غير موجودة. ربما تم نقلها أو حذفها، أو الرابط غير صحيح. الرجاء العودة إلى الصفحة الرئيسية.";
+            message = "The page you are trying to access does not exist. It may have been moved or deleted, or the link is incorrect. Please return to the homepage.";
         }
     }
 
     return (
         <div className="relative flex flex-col items-center justify-center min-h-screen bg-green-50">
-            
+
             {/* Wrapper */}
             <div className="flex flex-col text-center text-black px-6 w-fit h-fit justify-center items-center">
-                
+
                 {/* Error Illustration */}
                 <img
                     src={errorImage}
@@ -43,7 +43,7 @@ function ErrorPage() {
                     href="/"
                     className="inline-block bg-green-600 text-white rounded-full px-6 py-2 text-sm font-medium border border-green-600 transition-all duration-300 ease-in-out hover:bg-white hover:text-green-600"
                 >
-                    العودة للصفحة الرئيسية
+                   Back to the Homepage
                 </a>
 
             </div>
