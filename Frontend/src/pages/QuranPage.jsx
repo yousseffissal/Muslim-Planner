@@ -28,10 +28,11 @@ function QuranPage() {
 
   return (
     <div
-      className="w-full md:p-4 p-2 bg-no-repeat bg-center bg-cover min-h-screen"
+      className="w-full md:p-4 p-2 bg-no-repeat bg-center bg-cover"
       style={{
         backgroundImage: result ? "none" : `url(${background})`,
         backgroundColor: result ? "#e6f9e6" : "transparent",
+        minHeight: showList ? "100vh" : "calc(100vh - 64px)"
       }}
     >
       <div className="w-full mx-auto mb-2">

@@ -17,7 +17,7 @@ function AdhanTime() {
   } = AdhanHook();
 
   return (
-    <div className="min-h-screen overflow-y-auto flex justify-center p-4 bg-no-repeat bg-center bg-cover"
+    <div className="min-h-[calc(100vh-64px)] overflow-y-auto flex justify-center p-4 bg-no-repeat bg-center bg-cover"
       style={{ backgroundImage: `url(${background})` }}>
       <div className="flex items-start justify-center">
 
