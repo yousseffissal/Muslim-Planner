@@ -55,7 +55,7 @@ function AdhanTime() {
             You can type city names in English or Arabic. <br />
             ⚠️ Note: If the city name is incorrect, the app may return random or approximate prayer times
             because the API tries to find the closest match based on available locations. <br />
-            ℹ️ This app uses <a href="https://aladhan.com" className="underline text-blue-600">AlAdhan.com API</a> for prayer times. <br />
+            ℹ️ This app uses <a href="https://aladhan.com" className="underline text-red-800">AlAdhan.com API</a> for prayer times. <br />
             🛠 I will add a solution to validate city names properly in the future.
           </p>
 

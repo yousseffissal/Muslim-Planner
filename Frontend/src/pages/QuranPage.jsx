@@ -105,6 +105,19 @@ function QuranPage() {
               Select a Surah from the list to view its verses and reflect on their meanings.
             </p>
 
+            <p className="mt-6 text-sm md:text-base lg:text-lg text-green-900/80 leading-relaxed">
+              This app uses{" "}
+              <a
+                href="https://alquran.cloud/api"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-emerald-700 hover:text-emerald-900 underline decoration-2 underline-offset-4 transition-colors duration-300"
+              >
+                AlQuran.cloud API
+              </a>{" "}
+              to fetch Quran verses and related data.
+            </p>
+
           </div>
 
         </div>
