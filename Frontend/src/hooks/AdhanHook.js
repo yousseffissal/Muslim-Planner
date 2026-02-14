@@ -34,7 +34,7 @@ export const AdhanHook = () => {
                 `${API_URL}/AdhanTime/AdhanInMyCity/${city}/${formattedDate}`
             )
             setResult(response.data)
-            setSuccessMsg(`Calendar retrieved successfully for : ${city} in : ${formattedDate}`);
+            setSuccessMsg(`Prayer times retrieved successfully for : ${city} in : ${formattedDate}`);
 
         } catch (err) {
             setError(
