@@ -25,5 +25,3 @@ Built to help Muslims stay consistent with their daily worship and productivity.
 ![Preview 3](./Pictures/image3.png)
 
 ![Preview 4](./Pictures/image4.png)
-
-![Preview 4](./Pictures/image4.png)
