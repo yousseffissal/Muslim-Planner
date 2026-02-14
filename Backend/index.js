@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const AdhanRoutes = require('./routes/adhan.route.js');
+const QuranRoutes = require('./routes/quran.route.js')
 
 require('dotenv').config();
 
@@ -22,6 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/AdhanTime', AdhanRoutes);
+app.use('/Quran', QuranRoutes);
 
 app.get('/', (req, res) => {
     res.status(200).send('Hello to the Express server!');
