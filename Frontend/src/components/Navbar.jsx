@@ -20,6 +20,7 @@ function Navbar() {
                             <Link
                                 to={'/'}
                                 className="hover:text-green-600 transition"
+                                onClick={scrollToTop}
                             >
                                 Muslim Planner
                             </Link>
