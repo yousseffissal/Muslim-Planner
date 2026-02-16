@@ -32,7 +32,7 @@ function QuranPage() {
       style={{
         backgroundImage: result ? "none" : `url(${background})`,
         backgroundColor: result ? "#e6f9e6" : "transparent",
-        minHeight: showList ? "100vh" : "calc(100vh - 64px)"
+        minHeight: "100vh"
       }}
     >
       <div className="w-full mx-auto mb-2">
