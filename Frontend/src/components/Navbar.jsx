@@ -7,6 +7,7 @@ import { AiOutlineClose } from "react-icons/ai";
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
+    const visibleIndexes = [0, 1, 2, 7];
 
     return (
         <nav className=" bg-white shadow-md border-b border-green-100 w-full h-16 fixed top-0 z-50">
@@ -28,20 +29,22 @@ function Navbar() {
 
                     {/* Desktop Links */}
                     <div className="hidden navbar:flex space-x-8 text-gray-700 font-medium">
-                        {links.slice(0, 4).map((link) => (
-                            <NavLink
-                                key={link.name}
-                                to={link.path}
-                                onClick={scrollToTop}
-                                className={({ isActive }) =>
-                                    isActive
-                                        ? "text-green-600 font-semibold border-b-2 border-green-600"
-                                        : "hover:text-green-600 transition"
-                                }
-                            >
-                                {link.name}
-                            </NavLink>
-                        ))}
+                        {links
+                            .filter((_, index) => visibleIndexes.includes(index))
+                            .map((link) => (
+                                <NavLink
+                                    key={link.name}
+                                    to={link.path}
+                                    onClick={scrollToTop}
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? "text-green-600 font-semibold border-b-2 border-green-600"
+                                            : "hover:text-green-600 transition"
+                                    }
+                                >
+                                    {link.name}
+                                </NavLink>
+                            ))}
                     </div>
 
                     {/* Desktop Button */}

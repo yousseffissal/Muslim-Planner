@@ -26,8 +26,9 @@ function Footer() {
                         <h3 className="text-lg font-semibold mb-4 text-green-500">
                             Quick Links
                         </h3>
-                        <ul className="space-y-2 text-gray-300">
-                            {links.map((link) => (
+                        <div className="md:grid md:grid-cols-2 flex flex-col md:gap-8 gap-2">
+                            <ul className="space-y-2 text-gray-300">
+                            {links.slice(0, 4).map((link) => (
                                 <li key={link.name} onClick={scrollToTop}>
                                     <NavLink to={link.path}>
                                         {link.name}
@@ -35,6 +36,17 @@ function Footer() {
                                 </li>
                             ))}
                         </ul>
+                        <ul className="space-y-2 text-gray-300">
+                            {links.slice(4, 8).map((link) => (
+                                <li key={link.name} onClick={scrollToTop}>
+                                    <NavLink to={link.path}>
+                                        {link.name}
+                                    </NavLink>
+                                </li>
+                            ))}
+                        </ul>
+
+                        </div>
                     </div>
 
                     {/* Contact / Info */}

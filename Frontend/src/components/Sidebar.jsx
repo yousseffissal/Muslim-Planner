@@ -21,7 +21,7 @@ function Sidebar() {
         <div className="w-64 h-[calc(100vh-64px)] 
                         bg-gradient-to-b from-gray-100 to-gray-200 
                         border-r border-gray-300 
-                        shadow-sm p-6 flex-col"
+                        shadow-sm p-4 flex-col"
             style={{ display: isVisible ? 'flex' : 'none' }}
         >
 
@@ -30,7 +30,7 @@ function Sidebar() {
             </h2>
 
             <ul className="space-y-3 text-gray-700 font-medium">
-                {links.map((link) => (
+                {links.slice(0,7).map((link) => (
                     <li key={link.name}>
                         <NavLink
                             to={link.path}
