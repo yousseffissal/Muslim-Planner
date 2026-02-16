@@ -4,6 +4,7 @@ import AdhanTime from "../pages/AdhanTime.jsx";
 import Welcome from "../pages/Welcome.jsx";
 import ErrorPage from "../pages/ErrorPage.jsx";
 import QuranPage from "../pages/QuranPage.jsx";
+import OwnerPage from "../pages/OwnerPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "quran",
         element: <QuranPage />,
+      },
+      {
+        path: "about",
+        element: <OwnerPage />,
       },
     ],
   },
