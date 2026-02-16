@@ -40,7 +40,7 @@ function Sidebar() {
                                 transition-all duration-200
                                 ${isActive
                                     ? "bg-green-600 text-white font-semibold"
-                                    : "hover:bg-gray-400 hover:text-white"
+                                    : "hover:bg-[#eeb703] hover:text-white"
                                 }`
                             }
                         >

@@ -39,7 +39,7 @@ function Navbar() {
                                     className={({ isActive }) =>
                                         isActive
                                             ? "text-green-600 font-semibold border-b-2 border-green-600"
-                                            : "hover:text-green-600 transition"
+                                            : "hover:text-[#eeb703] transition"
                                     }
                                 >
                                     {link.name}
