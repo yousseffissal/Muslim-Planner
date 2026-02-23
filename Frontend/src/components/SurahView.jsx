@@ -152,7 +152,7 @@ function SurahView({ surahView }) {
       </div>
 
       <p
-        className="text-base sm:text-lg md:text-3xl lg:text-3xl sm:leading-loose lg:leading-loose md:leading-loose md:px-5 px-3"
+        className="text-base sm:text-lg md:text-3xl lg:text-3xl leading-[1.8] sm:leading-[2.2] md:leading-loose lg:leading-loose md:px-5 px-3"
         style={{ textAlign: "justify", direction: "rtl" }}
       >
         {surah.ayahs.map((ayah, index) => {
