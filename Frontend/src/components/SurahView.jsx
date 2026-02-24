@@ -25,7 +25,7 @@ function SurahView({ surahView }) {
     if (!surahView) return;
     setSurah(surahView.data);
     setCurrentAyahIndex(0);
-    setIsPlaying(true);
+    setIsPlaying(false);
   }, [surahView]);
 
   useEffect(() => {
