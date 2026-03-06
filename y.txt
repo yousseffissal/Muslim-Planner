@@ -1,0 +1,40 @@
+Preumitheus : http://localhost:9090
+Grafana : http://localhost:3000
+
+Run preumitheus : 
+cd C:\Users\youss\OneDrive\Desktop\prometheus\prometheus-3.10.0.windows-amd64
+
+.\prometheus.exe --config.file=prometheus.yml
+
+# Global configuration
+global:
+  scrape_interval: 15s        # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 15s    # Evaluate rules every 15 seconds. Default is every 1 minute.
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          # - alertmanager:9093
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+# Scrape configurations
+scrape_configs:
+  # Scrape Prometheus itself
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]
+        labels:
+          app: "prometheus"
+
+  # Scrape Node.js API metrics
+  - job_name: "node-api"
+    static_configs:
+      - targets: ["localhost:8090"]    # The port where your Node.js API is running
+        labels:
+          app: "muslim-planner-api"
