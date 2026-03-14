@@ -1,8 +1,11 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const mongoose = require('mongoose');
 const AdhanRoutes = require('./routes/adhan.route.js');
-const QuranRoutes = require('./routes/quran.route.js')
+const QuranRoutes = require('./routes/quran.route.js');
+const authRoutes = require("./routes/auth.route.js");
+const userRoutes = require("./routes/user.route.js");
 
 const client = require("prom-client");
 
@@ -10,11 +13,19 @@ require('dotenv').config();
 
 const PORT = process.env.PORT || 8090;
 const FRONT_URL = process.env.FRONT_URL;
+const MONGO_URI = process.env.MONGO_URI;
+
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => console.log("MongoDB connected ✅"))
+    .catch(err => console.log("MongoDB connection error ❌", err));
 
 const corsOptions = {
     origin: FRONT_URL,
     optionsSuccessStatus: 200
 };
+app.use(cors(corsOptions));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 /* ===============================
    PROMETHEUS METRICS CONFIG
@@ -74,18 +85,16 @@ app.get("/metrics", async (req, res) => {
    REST OF THE CODE
 ================================ */
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
-
-app.use(cors(corsOptions));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-
 app.use('/AdhanTime', AdhanRoutes);
 app.use('/Quran', QuranRoutes);
+app.use("/auth", authRoutes);
+app.use("/user", userRoutes);
 
 app.get('/', (req, res) => {
     res.status(200).send('Hello to the Express server!');
     console.log('Hello to the Express server!');
+});
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
