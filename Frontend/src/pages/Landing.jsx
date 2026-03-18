@@ -6,7 +6,6 @@ export default function LandingPage() {
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
-  // Redirect if user is already authenticated
   useEffect(() => {
     if (isAuthenticated) {
       navigate("/app/dashboard");
@@ -17,7 +16,7 @@ export default function LandingPage() {
     <div className="min-h-screen bg-white text-gray-900 font-sans">
       {/* Navbar */}
       <header className="flex justify-between items-center px-8 py-6 shadow-md">
-        <h1 className="text-2xl font-bold text-green-700">MuslimTasks</h1>
+        <h1 className="text-2xl font-bold text-green-700">Muslim Planner</h1>
         <nav className="space-x-4">
           <Link
             to="/login"
