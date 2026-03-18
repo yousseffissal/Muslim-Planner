@@ -1,4 +1,4 @@
-import assest from '../assets/asset2.png'
+import assest from '../assets/asset1.jpg'
 import { Link } from 'react-router-dom'
 import background from '../assets/background6.jpg'
 function Welcome() {
