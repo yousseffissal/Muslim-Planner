@@ -7,6 +7,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem("token") || null);
   const [isAuthenticated, setIsAuthenticated] = useState(!!token);
+  const [loading, setLoading] = useState(true); // 🔥 NEW
 
   // --- login ---
   const login = async (formData) => {
@@ -17,9 +18,7 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem("token", token);
       setToken(token);
       setIsAuthenticated(true);
-
-      await fetchMe();
-      console.log(user)
+      
     } catch (err) {
       if (err.response) {
         const error = new Error(err.response.data.message || "Something went wrong");
@@ -55,27 +54,44 @@ export const AuthProvider = ({ children }) => {
     setIsAuthenticated(false);
   };
 
-  // --- getMe / fetchMe ---
+  // --- fetchMe ---
   const fetchMe = async () => {
-    if (!token) return;
+    if (!token) {
+      setLoading(false); // 🔥 مهم
+      return;
+    }
+
     try {
       const res = await api.get("/user/me");
       setUser(res.data);
     } catch (err) {
       console.error("Failed to fetch user:", err.response?.data?.message || err.message);
       logout();
-      throw err;
+    } finally {
+      setLoading(false); // 🔥 مهم جدا
     }
   };
 
   useEffect(() => {
-    if (token && !user) {
-      fetchMe();
-    }
-  }, []);
+  if (token) {
+    fetchMe();
+  } else {
+    setLoading(false);
+  }
+}, [token]); // 🔥 مهم
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, fetchMe, login, register, logout}}>
+    <AuthContext.Provider
+      value={{
+        user,
+        isAuthenticated,
+        loading, // 🔥 NEW
+        fetchMe,
+        login,
+        register,
+        logout,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
