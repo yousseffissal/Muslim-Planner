@@ -13,11 +13,11 @@ require('dotenv').config();
 
 const PORT = process.env.PORT || 8090;
 const FRONT_URL = process.env.FRONT_URL;
-const MONGO_URI = process.env.MONGO_URI;
+const MONGO_URL = process.env.MONGO_URL;
 
-mongoose.connect(process.env.MONGO_URI)
-    .then(() => console.log("MongoDB connected ✅"))
-    .catch(err => console.log("MongoDB connection error ❌", err));
+mongoose.connect(MONGO_URL)
+  .then(() => console.log("MongoDB connected ✅"))
+  .catch(err => console.log("MongoDB connection error ❌", err));
 
 const corsOptions = {
     origin: FRONT_URL,
