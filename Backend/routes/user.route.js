@@ -7,8 +7,11 @@ const {
   addTask,
   getTasks,
   updateTask,
-  deleteTask
+  deleteTask,
+  getMe
 } = require("../controllers/user.controller");
+
+router.get("/me", auth, getMe);
 
 // Quran Progress
 router.patch("/quran/progress", auth, updateQuranProgress);
