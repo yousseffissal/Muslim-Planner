@@ -33,10 +33,10 @@ function Sidebar() {
 
                 {/* Cover صغير خلف الـ Avatar */}
                 <div
-                    className="w-full h-20 bg-cover bg-center bg-yellow-400"
-                    /*style={{
-                        backgroundImage: `url(${assest})`,
-                    }}*/
+                    className="w-full h-20"
+                    style={{
+                        background: "linear-gradient(90deg, #FFD700, #FFC300, #FFB700)", // تدرج ذهبي
+                    }}
                 ></div>
 
                 {/* Avatar */}
