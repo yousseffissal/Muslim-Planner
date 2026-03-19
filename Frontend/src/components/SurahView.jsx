@@ -3,6 +3,8 @@ import { FaStepBackward, FaStepForward, FaPlay, FaPause, FaStar } from "react-ic
 import { TbReload } from "react-icons/tb";
 import bismilah from "../assets/bismilah.png";
 import { saveProgress, getProgress } from "../services/QuranService";
+import Swal from "sweetalert2";
+import successIcon from "../assets/success.png"; // استيراد الصورة
 
 function SurahView({ surahView }) {
   const [surah, setSurah] = useState();
@@ -143,11 +145,57 @@ function SurahView({ surahView }) {
 
               <span
                 onClick={async () => {
-                  setCurrentAyahIndex(index);
-                  setIsPlaying(false);
-                  await saveProgress(surah.number, ayah.numberInSurah);
-                  setSavedAyah(ayah.numberInSurah);
-                  document.getElementById(`ayah-${index}`)?.scrollIntoView({ behavior: "smooth", block: "center" });
+                  try {
+                    // تعيين الآية الحالية وإيقاف التشغيل
+                    setCurrentAyahIndex(index);
+                    setIsPlaying(false);
+
+                    // حفظ التقدم في السيرفر أو التخزين المحلي
+                    await saveProgress(surah.number, ayah.numberInSurah);
+
+                    // عرض رسالة نجاح باستخدام SweetAlert2
+                    await Swal.fire({
+                      title: "Progress Saved",
+                      text: "Your progress was saved successfully!",
+                      imageUrl: successIcon,
+                      imageWidth: 80,   // العرض
+                      imageHeight: 80,  // الارتفاع
+                      imageAlt: "Custom icon",
+                      confirmButtonText: "OK",
+                      customClass: {
+                        popup: "swal-popup-green",
+                        title: "swal-title-green",
+                        content: "swal-content-green",
+                        confirmButton: "swal-btn-green",
+                      },
+                      buttonsStyling: false, // لتعطيل النمط الافتراضي للسويال
+                    });
+
+                    // تحديث الحالة المحلية للآية المحفوظة
+                    setSavedAyah(ayah.numberInSurah);
+
+                    // تمرير الشاشة إلى الآية المختارة بسلاسة
+                    document.getElementById(`ayah-${index}`)?.scrollIntoView({
+                      behavior: "smooth",
+                      block: "center"
+                    });
+
+                  } catch (error) {
+                    console.error("Failed to save progress", error);
+                    // رسالة خطأ عند الفشل
+                    Swal.fire({
+                      text: "Failed to save progress",
+                      icon: "error",
+                      confirmButtonText: "OK",
+                      customClass: {
+                        popup: "swal-popup-red",
+                        title: "swal-title-red",
+                        content: "swal-content-red",
+                        confirmButton: "swal-btn-red",
+                      },
+                      buttonsStyling: false,
+                    });
+                  }
                 }}
                 className={`mr-2 inline-flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 cursor-pointer font-semibold rounded-full transition-all duration-300 ease-in-out
                   ${savedAyah === ayah.numberInSurah ? "bg-orange-600 text-white scale-110 shadow-lg animate-pulse" : "bg-green-200 text-green-800 hover:bg-green-600 hover:text-white hover:scale-110"}

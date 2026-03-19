@@ -2,6 +2,9 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext.jsx";
 import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import successIcon from "../assets/success.png";
+
 
 export default function Register() {
   const { register } = useAuth();
@@ -20,16 +23,44 @@ export default function Register() {
     setSuccess("");
 
     try {
-      await register(form); 
+      await register(form);
       setSuccess("Account created successfully!");
       navigate("/app/dashboard");
+      await Swal.fire({
+        title: "Account created",
+        text: "Your Account was created successfully!",
+        imageUrl: successIcon,
+        imageWidth: 80, 
+        imageHeight: 80, 
+        imageAlt: "Custom icon",
+        confirmButtonText: "OK",
+        customClass: {
+          popup: "swal-popup-green",
+          title: "swal-title-green",
+          content: "swal-content-green",
+          confirmButton: "swal-btn-green",
+        },
+        buttonsStyling: false, 
+      });
     } catch (err) {
       setError(err.message);
+      Swal.fire({
+        text: err.message,
+        icon: "error",
+        confirmButtonText: "OK",
+        customClass: {
+          popup: "swal-popup-red",
+          title: "swal-title-red",
+          content: "swal-content-red",
+          confirmButton: "swal-btn-red",
+        },
+        buttonsStyling: false,
+      });
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-green-50">
+    <div className="min-h-screen flex items-center justify-center bg-green-50 px-2">
       <div className="bg-white shadow-2xl rounded-2xl p-10 w-full max-w-md animate-fadeIn">
         <h1 className="text-3xl font-bold text-center mb-6 text-green-700">Register</h1>
 

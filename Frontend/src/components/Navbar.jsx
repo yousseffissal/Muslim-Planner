@@ -6,6 +6,8 @@ import { BiMenu } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
 import { useAuth } from "../context/AuthContext.jsx"
 import assest from '../assets/asset2.png'
+import Swal from "sweetalert2";
+import successIcon from "../assets/success.png";
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
@@ -50,13 +52,49 @@ function Navbar() {
                     </div>
                     <div className="hidden navbar:flex p-4 border-t border-gray-300">
                         <button
-                            onClick={logout}
+                            onClick={async () => {
+                                const result = await Swal.fire({
+                                    text: "Are you sure you want to logout?",
+                                    icon: "warning",
+                                    showCancelButton: true,
+                                    confirmButtonText: "Logout",
+                                    cancelButtonText: "Cancel",
+                                    customClass: {
+                                        popup: "swal-popup-green",
+                                        title: "swal-title-green",
+                                        content: "swal-content-green",
+                                        confirmButton: "swal-btn-green",
+                                        cancelButton: "swal-btn-red",
+                                    },
+                                    buttonsStyling: false,
+                                });
+
+                                if (result.isConfirmed) {
+                                    logout();
+                                    setIsOpen(false);
+                                    await Swal.fire({
+                                        title: "Logged Out",
+                                        text: "You have been logged out, see you soon!",
+                                        icon: successIcon,
+                                        confirmButtonText: "OK",
+                                        imageUrl: successIcon,
+                                        imageWidth: 80,
+                                        imageHeight: 80,
+                                        imageAlt: "Custom icon",
+                                        customClass: {
+                                            popup: "swal-popup-green",
+                                            confirmButton: "swal-btn-green",
+                                        },
+                                        buttonsStyling: false,
+                                    });
+                                }
+                            }}
                             className="w-full flex items-center justify-center gap-2 
-                               bg-red-500 hover:bg-red-600 
-                               text-white font-semibold py-2 px-4 
-                               rounded-xl transition-all duration-200 
-                               shadow-md hover:shadow-lg"
-                        >
+                                bg-red-500 hover:bg-red-600 
+                                text-white font-semibold py-2 px-4 
+                                rounded-xl transition-all duration-200 
+                                shadow-md hover:shadow-lg"
+                            >
                             Logout
                         </button>
                     </div>
@@ -87,31 +125,31 @@ function Navbar() {
                         bg-white shadow-xl flex flex-col overflow-hidden">
 
                         {/* 🔥 USER SECTION */}
-                                    <div className="relative flex flex-col items-center w-full border-b border-gray-300">
-                        
-                                        {/* Cover صغير خلف الـ Avatar */}
-                                        <div
-                                            className="w-full h-20 bg-cover bg-center bg-yellow-400"
-                                            /*style={{
-                                                backgroundImage: `url(${assest})`,
-                                            }}*/
-                                        ></div>
-                        
-                                        {/* Avatar */}
-                                        <img
-                                            src={user?.avatar || assest}
-                                            alt="user"
-                                            className="w-28 h-28 rounded-full object-cover border-4 border-green-500 shadow-lg -mt-14 z-10 bg-gray-200"
-                                        />
-                        
-                                        <h3 className="mt-4 text-xl font-bold text-gray-800 text-center z-10 relative">
-                                            {user?.username || "Guest"}
-                                        </h3>
-                        
-                                        <p className="mb-5 text-sm text-gray-500 mt-1 relative z-10">
-                                            {user?.email || "guest@example.com"}
-                                        </p>
-                                    </div>
+                        <div className="relative flex flex-col items-center w-full border-b border-gray-300">
+
+                            {/* Avatar */}
+                            <div
+                                className="w-full h-20 bg-cover bg-center bg-yellow-400"
+                            /*style={{
+                                backgroundImage: `url(${assest})`,
+                            }}*/
+                            ></div>
+
+                            {/* Avatar */}
+                            <img
+                                src={user?.avatar || assest}
+                                alt="user"
+                                className="w-28 h-28 rounded-full object-cover border-4 border-green-500 shadow-lg -mt-14 z-10 bg-gray-200"
+                            />
+
+                            <h3 className="mt-4 text-xl font-bold text-gray-800 text-center z-10 relative">
+                                {user?.username || "Guest"}
+                            </h3>
+
+                            <p className="mb-5 text-sm text-gray-500 mt-1 relative z-10">
+                                {user?.email || "guest@example.com"}
+                            </p>
+                        </div>
 
                         {/* LINKS */}
                         <div className="flex-1 overflow-y-auto p-4 space-y-3 text-gray-700 font-medium">
@@ -139,17 +177,50 @@ function Navbar() {
                         {/* LOGOUT */}
                         <div className="p-4 border-t border-gray-200">
                             <button
-                                onClick={() => {
-                                    logout();
-                                    setIsOpen(false);
+                                onClick={async () => {
+                                    const result = await Swal.fire({
+                                        text: "Are you sure you want to logout?",
+                                        icon: "warning",
+                                        showCancelButton: true,
+                                        confirmButtonText: "Logout",
+                                        cancelButtonText: "Cancel",
+                                        customClass: {
+                                            popup: "swal-popup-green",
+                                            title: "swal-title-green",
+                                            content: "swal-content-green",
+                                            confirmButton: "swal-btn-green",
+                                            cancelButton: "swal-btn-red",
+                                        },
+                                        buttonsStyling: false,
+                                    });
+
+                                    if (result.isConfirmed) {
+                                        logout();
+                                        setIsOpen(false);
+                                        await Swal.fire({
+                                            title: "Logged Out",
+                                            text: "You have been logged out, see you soon!",
+                                            icon: successIcon,
+                                            confirmButtonText: "OK",
+                                            imageUrl: successIcon,
+                                            imageWidth: 80,
+                                            imageHeight: 80,
+                                            imageAlt: "Custom icon",
+                                            customClass: {
+                                                popup: "swal-popup-green",
+                                                confirmButton: "swal-btn-green",
+                                            },
+                                            buttonsStyling: false,
+                                        });
+                                    }
                                 }}
                                 className="w-full flex items-center justify-center gap-2 
-                               bg-red-500 hover:bg-red-600 
-                               text-white font-semibold py-3 px-4 
-                               rounded-xl transition-all duration-200 
-                               shadow-md hover:shadow-lg"
-                            >
-                                🚪 Logout
+                                    bg-red-500 hover:bg-red-600 
+                                    text-white font-semibold py-3 px-4 
+                                    rounded-xl transition-all duration-200 
+                                    shadow-md hover:shadow-lg"
+                                >
+                                Logout
                             </button>
                         </div>
 

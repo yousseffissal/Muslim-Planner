@@ -26,6 +26,75 @@
   scrollbar-color: #22c55e white;
 }
 
+.swal-popup-green {
+  border-radius: 16px;
+  padding: 25px 30px;
+  background: white;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.swal-title-green {
+  color: #1b5e20;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.swal-content-green {
+  color: #2d4d32;
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+
+.swal-btn-green {
+  background-color: #4caf50;
+  color: white;
+  border-radius: 10px;
+  padding: 10px 25px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.2s, transform 0.2s;
+  margin-right: 5px; 
+}
+
+.swal-btn-green:hover {
+  background-color: #43a047;
+  transform: translateY(-2px);
+}
+
+.swal-popup-red {
+  border-radius: 16px;
+  padding: 25px 30px;
+  background: white;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.swal-title-red {
+  color: #5e1b1b;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.swal-content-red {
+  color: #4d2d2d;
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+
+.swal-btn-red {
+  background-color: #af4c4c;
+  color: white;
+  border-radius: 10px;
+  padding: 10px 25px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.2s, transform 0.2s;
+   margin-left: 5px;
+}
+
+.swal-btn-red:hover {
+  background-color: #a04343;
+  transform: translateY(-2px);
+}
 /*@font-face {
   font-family: "UthmanicHafs";
   src: url("./assets/fonts/KFGQPC-Uthmanic.otf") format("opentype");
