@@ -8,7 +8,7 @@ function OwnerPage() {
 
                 <img
                     className="w-40 h-40 md:w-56 md:h-56 object-cover rounded-full mx-auto shadow-md"
-                    src="/me.png"
+                    src="/me2.png"
                     alt="Youssef Fissal"
                 />
 
