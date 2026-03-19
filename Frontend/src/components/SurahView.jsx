@@ -1,12 +1,15 @@
 import { useEffect, useRef, useState } from "react";
-import { FaStepBackward, FaStepForward, FaPlay, FaPause } from "react-icons/fa";
+import { FaStepBackward, FaStepForward, FaPlay, FaPause, FaStar } from "react-icons/fa";
 import { TbReload } from "react-icons/tb";
 import bismilah from "../assets/bismilah.png"
+import { saveProgress, getProgress } from "../services/QuranService";
+
 
 function SurahView({ surahView }) {
   const [surah, setSurah] = useState();
   const [currentAyahIndex, setCurrentAyahIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [savedAyah, setSavedAyah] = useState(null);
   const audioRef = useRef(null);
 
   const togglePlay = () => {
@@ -36,6 +39,25 @@ function SurahView({ surahView }) {
       audioRef.current.play().catch(() => { });
     }
   }, [currentAyahIndex, isPlaying]);
+
+  useEffect(() => {
+    const loadProgress = async () => {
+      if (!surah) return;
+      try {
+        const progress = await getProgress();
+
+        console.log("Progress from DB:", progress);
+
+        if (progress?.surah === surah.number) {
+          setSavedAyah(progress.ayah);
+        }
+      } catch (err) {
+        console.error("Failed to load progress", err);
+      }
+    };
+
+    loadProgress();
+  }, [surah]);
 
   if (!surah) return null;
 
@@ -187,10 +209,41 @@ function SurahView({ surahView }) {
                 }
               >
                 {text}
-                <span className="mr-2 inline-flex items-center justify-center w-6 h-6 md:w-8 md:h-8 bg-green-200 text-green-800 font-semibold rounded-full">
-                  {ayah.numberInSurah}
-                </span>
               </span>
+
+              <span
+                onClick={async () => {
+                  setCurrentAyahIndex(index);
+                  setIsPlaying(false);
+
+                  try {
+                    await saveProgress(surah.number, ayah.numberInSurah);
+                    setSavedAyah(ayah.numberInSurah);
+                    console.log("Saved:", surah.number, ayah.numberInSurah);
+                  } catch (err) {
+                    console.error("Save failed", err);
+                  }
+
+                  const el = document.getElementById(`ayah-${index}`);
+                  if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+                }}
+
+                className={`
+                  mr-2 inline-flex items-center justify-center 
+                  w-6 h-6 md:w-8 md:h-8 
+                  cursor-pointer 
+                  font-semibold 
+                  rounded-full 
+                  transition-all duration-300 ease-in-out
+                 ${savedAyah === ayah.numberInSurah
+                    ? "bg-orange-600 text-white scale-110 shadow-lg animate-pulse"
+                    : "bg-green-200 text-green-800 hover:bg-green-600 hover:text-white hover:scale-110"
+                  }
+                `}
+              >
+                {savedAyah === ayah.numberInSurah ? <FaStar size={20} /> : ayah.numberInSurah}
+              </span>
+
               {" "}
             </>
           );
