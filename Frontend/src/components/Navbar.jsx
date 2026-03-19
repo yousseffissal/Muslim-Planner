@@ -86,23 +86,32 @@ function Navbar() {
                     <div className="absolute top-16 right-0 h-[calc(100vh-64px)] w-72 
                         bg-white shadow-xl flex flex-col overflow-hidden">
 
-                        {/* USER */}
-                        <div className="flex flex-col items-center py-6 border-b border-gray-200">
-                            <img
-                                src={user?.avatar || assest}
-                                alt="user"
-                                className="w-24 h-24 rounded-full object-cover 
-                               border-4 border-green-500 shadow-lg"
-                            />
-
-                            <h3 className="mt-3 text-lg font-bold text-gray-800 text-center">
-                                {user?.username || "Guest"}
-                            </h3>
-
-                            <p className="text-sm text-gray-500">
-                                Welcome back 👋
-                            </p>
-                        </div>
+                        {/* 🔥 USER SECTION */}
+                                    <div className="relative flex flex-col items-center w-full border-b border-gray-300">
+                        
+                                        {/* Cover صغير خلف الـ Avatar */}
+                                        <div
+                                            className="w-full h-20 bg-cover bg-center bg-yellow-400"
+                                            /*style={{
+                                                backgroundImage: `url(${assest})`,
+                                            }}*/
+                                        ></div>
+                        
+                                        {/* Avatar */}
+                                        <img
+                                            src={user?.avatar || assest}
+                                            alt="user"
+                                            className="w-28 h-28 rounded-full object-cover border-4 border-green-500 shadow-lg -mt-14 z-10 bg-gray-200"
+                                        />
+                        
+                                        <h3 className="mt-4 text-xl font-bold text-gray-800 text-center z-10 relative">
+                                            {user?.username || "Guest"}
+                                        </h3>
+                        
+                                        <p className="mb-5 text-sm text-gray-500 mt-1 relative z-10">
+                                            {user?.email || "guest@example.com"}
+                                        </p>
+                                    </div>
 
                         {/* LINKS */}
                         <div className="flex-1 overflow-y-auto p-4 space-y-3 text-gray-700 font-medium">

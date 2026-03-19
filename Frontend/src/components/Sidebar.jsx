@@ -29,21 +29,28 @@ function Sidebar() {
         >
 
             {/* 🔥 USER SECTION */}
-            <div className="flex flex-col items-center py-6 border-b border-gray-300">
-                
+            <div className="relative flex flex-col items-center w-full border-b border-gray-300">
+
+                {/* Cover صغير خلف الـ Avatar */}
+                <div
+                    className="w-full h-20 bg-cover bg-center bg-yellow-400"
+                    /*style={{
+                        backgroundImage: `url(${assest})`,
+                    }}*/
+                ></div>
+
+                {/* Avatar */}
                 <img
                     src={user?.avatar || assest}
                     alt="user"
-                    className="w-28 h-28 rounded-full object-cover 
-                               border-4 border-green-500 shadow-lg"
+                    className="w-28 h-28 rounded-full object-cover border-4 border-green-500 shadow-lg -mt-14 z-10 bg-gray-200"
                 />
 
-                <h3 className="mt-4 text-xl font-bold text-gray-800 text-center">
+                <h3 className="mt-4 text-2xl font-bold text-gray-800 text-center z-10 relative">
                     {user?.username || "Guest"}
                 </h3>
 
-                {/* optional subtitle */}
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="mb-5 text-lg text-gray-500 mt-1 relative z-10">
                     {user?.email || "guest@example.com"}
                 </p>
             </div>
