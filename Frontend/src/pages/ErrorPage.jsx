@@ -43,7 +43,7 @@ function ErrorPage() {
                 {/* Back Home Button */}
                 <a
                     href={isAuthenticated ? "/app/dashboard" : "/"}
-                    className="inline-block bg-green-600 text-white rounded-full px-6 py-2 text-sm font-medium border border-green-600 transition-all duration-300 ease-in-out hover:bg-white hover:text-green-600"
+                    className="inline-block bg-green-600 text-white rounded-full px-6 py-2 text-sm font-medium border border-green-600 transition-all duration-300 ease-in-out hover:bg-transparent hover:text-green-600"
                 >
                     Back to the Homepage
                 </a>
