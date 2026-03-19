@@ -227,21 +227,24 @@ function SurahView({ surahView }) {
                   const el = document.getElementById(`ayah-${index}`);
                   if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
                 }}
-
                 className={`
                   mr-2 inline-flex items-center justify-center 
-                  w-6 h-6 md:w-8 md:h-8 
+                  w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 
                   cursor-pointer 
                   font-semibold 
                   rounded-full 
                   transition-all duration-300 ease-in-out
-                 ${savedAyah === ayah.numberInSurah
-                    ? "bg-orange-600 text-white scale-110 shadow-lg animate-pulse"
-                    : "bg-green-200 text-green-800 hover:bg-green-600 hover:text-white hover:scale-110"
-                  }
+                  ${savedAyah === ayah.numberInSurah
+                                  ? "bg-orange-600 text-white scale-110 shadow-lg animate-pulse"
+                                  : "bg-green-200 text-green-800 hover:bg-green-600 hover:text-white hover:scale-110"
+                                }
                 `}
-              >
-                {savedAyah === ayah.numberInSurah ? <FaStar size={20} /> : ayah.numberInSurah}
+                >
+                {savedAyah === ayah.numberInSurah ? (
+                  <FaStar className="w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5" />
+                ) : (
+                  ayah.numberInSurah
+                )}
               </span>
 
               {" "}
