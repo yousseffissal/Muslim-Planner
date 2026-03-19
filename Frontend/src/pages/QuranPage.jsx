@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SurahList from "../components/SurahList";
 import SurahView from "../components/SurahView";
 import background from "../assets/background5.jpg";
@@ -6,6 +6,7 @@ import { QuranHook } from '../hooks/QuranHook.js'
 import { scrollToTop } from '../tools/ScrollTop'
 import { AiOutlineLeft } from "react-icons/ai";
 import { AiOutlineRight } from "react-icons/ai";
+import { getProgress } from "../services/QuranService";
 
 function QuranPage() {
 
@@ -17,8 +18,25 @@ function QuranPage() {
     fetchQuranSurah
   } = QuranHook();
 
+
   const [selectedSurah, setSelectedSurah] = useState(null);
   const [showList, setShowList] = useState(false);
+  const [savedProgress, setSavedProgress] = useState(null);
+
+  const loadProgress = async () => {
+    try {
+      const progress = await getProgress();
+
+      console.log("Progress from DB:", progress);
+      setSavedProgress(progress)
+    } catch (err) {
+      console.error("Failed to load progress", err);
+    }
+  };
+
+  useEffect(() => {
+    loadProgress();
+  }, []);
 
   const handleSelect = (number) => {
     setSelectedSurah(number);
@@ -55,6 +73,7 @@ function QuranPage() {
 
           <button
             onClick={() => {
+              loadProgress();
               setResult(null);
               setShowList(!showList);
               setSelectedSurah(null);
@@ -92,42 +111,91 @@ function QuranPage() {
 
       </div>
 
+
       {!showList && !selectedSurah && (
-        <div className="w-full flex items-start justify-center bg-transparent md:p-6 p-4">
+        <div className="w-full flex items-center justify-center md:p-6 p-4">
 
-          <div className="backdrop-blur-xl bg-white/10 border border-white/20 shadow-2xl rounded-3xl p-12 md:p-20 text-center max-w-3xl w-full">
+          <div className="
+            relative overflow-hidden
+            bg-gradient-to-br from-green-100 via-white to-green-50
+            border border-green-200
+            shadow-2xl
+            rounded-3xl
+            p-10 md:p-16
+            text-center
+            max-w-3xl w-full
+          ">
 
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-green-900 mb-8">
+            <div className="absolute -top-10 -right-10 w-40 h-40 bg-green-300 opacity-20 rounded-full blur-3xl"></div>
+            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-emerald-400 opacity-20 rounded-full blur-3xl"></div>
+
+            <div className="flex justify-center mb-6">
+              <div className="w-20 h-20 flex items-center justify-center rounded-full bg-green-600 text-white text-3xl shadow-lg">
+                📖
+              </div>
+            </div>
+
+            <h2 className="text-3xl md:text-5xl font-extrabold text-green-900 mb-6 leading-tight">
               Welcome to the Holy Quran Section
             </h2>
 
-            <p className="text-xl md:text-2xl lg:text-3xl text-green-800 leading-loose">
-              Select a Surah from the list to view its verses and reflect on their meanings.
+            <p className="text-lg md:text-xl text-green-800 leading-relaxed max-w-xl mx-auto">
+              Select a Surah from the list to explore its verses and reflect on their meanings in a peaceful reading experience.
             </p>
 
-            <p className="mt-6 text-sm md:text-base lg:text-lg text-green-900/80 leading-relaxed">
+            <p className="mt-6 text-sm md:text-base text-green-900/70 leading-relaxed">
               This app uses{" "}
               <a
                 href="https://alquran.cloud/api"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-emerald-700 hover:text-emerald-900 underline decoration-2 underline-offset-4 transition-colors duration-300"
+                className="font-semibold text-emerald-700 hover:text-emerald-900 underline decoration-2 underline-offset-4 transition"
               >
                 AlQuran.cloud API
               </a>{" "}
-              to fetch Quran verses and related data.
+              to fetch Quran data.
             </p>
+
+            {savedProgress && (
+              <button
+                onClick={() => {
+                  handleSelect(savedProgress.surah);
+
+                  setTimeout(() => {
+                    const el = document.getElementById(`ayah-${savedProgress.ayah - 1}`);
+                    if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+                  }, 500);
+                }}
+                className="
+                  mt-10 px-8 py-4
+                  bg-gradient-to-r from-green-600 to-emerald-500
+                  hover:from-green-700 hover:to-emerald-600
+                  text-white font-semibold
+                  rounded-2xl
+                  shadow-xl
+                  transition-all duration-300
+                  hover:scale-105
+                  active:scale-95
+                "
+              >
+                📍 Continue Reading (Ayah {savedProgress.ayah} Surah {savedProgress.surah})
+              </button>
+            )}
 
           </div>
 
         </div>
       )}
-
       {selectedSurah && (
         <div className="w-full mx-auto bg-white md:p-6 p-4 md:rounded-[36px] rounded-[28px] shadow">
           {loading && <p className="text-center text-green-900">Loading...</p>}
           {error && <p className="text-center text-red-600">{error}</p>}
-          {result && (<SurahView surahView={result} />)}
+          {result && (
+            <SurahView
+              surahView={result}
+              savedAyah={savedProgress ? savedProgress.ayah : null}
+            />
+          )}
         </div>
       )}
 
