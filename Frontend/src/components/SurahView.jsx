@@ -238,6 +238,9 @@ function SurahView({ surahView }) {
                                   ? "bg-orange-600 text-white scale-110 shadow-lg animate-pulse"
                                   : "bg-green-200 text-green-800 hover:bg-green-600 hover:text-white hover:scale-110"
                                 }
+                  ${
+                    isPlaying ? index === currentAyahIndex ? "" : "opacity-40 transition-all duration-300 cursor-pointer" : "cursor-pointer"
+                  }
                 `}
                 >
                 {savedAyah === ayah.numberInSurah ? (
