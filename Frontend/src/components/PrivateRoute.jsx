@@ -7,8 +7,12 @@ export default function PrivateRoute() {
 
   if (loading) {
     return (
-      <div className="h-screen flex items-center justify-center">
-        <p>Loading...</p>
+      <div className="h-screen flex items-center justify-center bg-gray-100">
+        <div className="flex flex-col items-center">
+          {/* Spinner */}
+          <div className="w-12 h-12 border-4 border-green-700 border-t-transparent rounded-full animate-spin mb-4"></div>
+          <p className="text-gray-700 font-medium text-lg">Loading...</p>
+        </div>
       </div>
     );
   }
