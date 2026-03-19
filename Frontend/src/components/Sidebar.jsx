@@ -6,7 +6,7 @@ import { useAuth } from '../context/AuthContext.jsx'
 import assest from '../assets/asset2.png'
 
 function Sidebar() {
-    const { user, logout } = useAuth();
+    const { user } = useAuth();
     const [isVisible, setIsVisible] = useState(false)
 
     useEffect(() => {
@@ -44,7 +44,7 @@ function Sidebar() {
 
                 {/* optional subtitle */}
                 <p className="text-sm text-gray-500 mt-1">
-                    Welcome back 👋
+                    {user.email}
                 </p>
             </div>
 
@@ -76,19 +76,6 @@ function Sidebar() {
                     ))}
                 </ul>
 
-            </div>
-
-            <div className="p-4 border-t border-gray-300">
-                <button
-                    onClick={logout}
-                    className="w-full flex items-center justify-center gap-2 
-                               bg-red-500 hover:bg-red-600 
-                               text-white font-semibold py-3 px-4 
-                               rounded-xl transition-all duration-200 
-                               shadow-md hover:shadow-lg"
-                >
-                    🚪 Logout
-                </button>
             </div>
 
         </div>

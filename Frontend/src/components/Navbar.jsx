@@ -48,6 +48,18 @@ function Navbar() {
                                 </NavLink>
                             ))}
                     </div>
+                    <div className="hidden navbar:flex p-4 border-t border-gray-300">
+                        <button
+                            onClick={logout}
+                            className="w-full flex items-center justify-center gap-2 
+                               bg-red-500 hover:bg-red-600 
+                               text-white font-semibold py-2 px-4 
+                               rounded-xl transition-all duration-200 
+                               shadow-md hover:shadow-lg"
+                        >
+                            Logout
+                        </button>
+                    </div>
 
                     {/* Mobile Button */}
                     <button
