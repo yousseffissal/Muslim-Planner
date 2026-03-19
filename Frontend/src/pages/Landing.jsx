@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
+import bg from "../assets/background2.jpg"
 
 export default function LandingPage() {
   const { isAuthenticated } = useAuth();
@@ -20,25 +21,25 @@ export default function LandingPage() {
         <nav className="space-x-4">
           <Link
             to="/login"
-            className="text-gray-700 hover:text-green-700 transition"
-          >
-            Login
-          </Link>
-          <Link
-            to="/register"
             className="bg-green-700 hover:bg-green-800 text-white px-5 py-2 rounded-lg text-sm font-medium transition"
           >
-            Get Started
+            Login
           </Link>
         </nav>
       </header>
 
       {/* Hero Section */}
-      <section className="flex flex-col items-center text-center px-6 py-28 bg-green-50">
-        <h1 className="text-4xl md:text-5xl font-extrabold mb-6 text-green-900">
+      <section className="flex flex-col items-center text-center px-6 py-28 "
+        style={{
+          background: `url(${bg})`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+        }}>
+        <h1 className="text-4xl md:text-5xl font-extrabold mb-6 text-green-600">
           Organize Your Daily Worship Effortlessly
         </h1>
-        <p className="max-w-2xl text-gray-700 mb-8 text-lg">
+        <p className="max-w-2xl text-white mb-8 text-lg">
           Track your daily Muslim tasks like prayers, Quran reading, dhikr, and good habits, all in one place.
         </p>
         <Link
