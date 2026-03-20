@@ -8,7 +8,7 @@ export default {
     extend: {
       screens: {
         'WelcomeB': '385px',
-        'navbar': '833px'
+        'navbar': '925px'
       },
     },
   },
