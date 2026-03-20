@@ -2,15 +2,19 @@ import { useEffect, useRef, useState } from "react";
 import { FaStepBackward, FaStepForward, FaPlay, FaPause, FaStar } from "react-icons/fa";
 import { TbReload } from "react-icons/tb";
 import bismilah from "../assets/bismilah.png";
+import bismilahdark from "../assets/bismilahdark.png";
 import { saveProgress, getProgress } from "../services/QuranService";
 import Swal from "sweetalert2";
-import successIcon from "../assets/success.png"; // استيراد الصورة
+import successIcon from "../assets/success.png";
+import { useTheme } from "../context/ThemeContext";
+
 
 function SurahView({ surahView }) {
   const [surah, setSurah] = useState();
   const [currentAyahIndex, setCurrentAyahIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [savedAyah, setSavedAyah] = useState(null);
+  const { theme, mode } = useTheme();
   const audioRef = useRef(null);
 
   // تشغيل وإيقاف الصوت
@@ -76,33 +80,41 @@ function SurahView({ surahView }) {
 
   return (
     <div className="w-full text-right font-serif" style={{ direction: "rtl", fontFamily: "'Scheherazade New', serif" }}>
-      <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl text-center text-green-800 font-bold mb-6 p-4 rounded-xl border border-green-800">
+      <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl text-center font-bold mb-6 p-4 rounded-xl" style={{ border: `1px solid ${theme.navbarlogo}`, color: `${theme.navbarlogo}` }}>
         {surah.name} - {surah.englishName}
       </h1>
 
       {showBismillah && (
-        <p className="text-lg sm:text-xl md:text-3xl lg:text-4xl text-center text-green-700 font-bold my-6">
-          <img src={bismilah} alt="بسم الله الرحمن الرحيم" className="inline-block h-16 md:h-20 lg:h-28 object-contain" />
+        <p className=" text-center my-3">
+          <img src={
+            mode === "light"
+              ? bismilah
+              : bismilahdark
+          } alt="بسم الله الرحمن الرحيم" className="inline-block h-28 md:h-32 lg:h-36 object-contain" />
         </p>
       )}
 
       {/* مشغل الصوت */}
       <div className="flex justify-center items-center mb-8">
-        <div className="flex flex-col justify-center items-center bg-white border-2 border-green-600 shadow-lg rounded-2xl p-6 w-full max-w-xl">
-          <h2 className="text-green-700 font-bold text-lg mb-4 text-center">
+        <div className="flex flex-col justify-center items-center bg-transparent border-2  shadow-lg rounded-2xl p-6 w-full max-w-xl"
+          style={{ border: `2px solid ${theme.navbarlogo}` }}>
+          <h2 className="font-bold text-lg mb-4 text-center"
+            style={{ color: theme.navbarlogo }}>
             {!isPlaying ? "🎧 تشغيل السورة" : "🎧 إيقاف السورة"}
           </h2>
 
-          <audio ref={audioRef} onEnded={handleEnded} className="w-full rounded-lg accent-green-600">
+          <audio ref={audioRef} onEnded={handleEnded} className="w-full rounded-lg">
             <source src={surah.ayahs[currentAyahIndex].audio} type="audio/mpeg" />
           </audio>
 
           <div className="flex justify-center items-center gap-4 mt-4">
-            <button onClick={goBack} className="bg-green-600 hover:bg-green-700 text-white p-3 rounded-full shadow-lg transition duration-300">
+            <button onClick={goBack} className="text-white p-3 rounded-full shadow-lg transition duration-300"
+              style={{ background: theme.navbarlogo }}>
               <FaStepForward size={20} />
             </button>
 
-            <button onClick={togglePlay} className="bg-green-600 hover:bg-green-700 text-white p-3 rounded-full shadow-lg transition duration-300">
+            <button onClick={togglePlay} className="text-white p-3 rounded-full shadow-lg transition duration-300"
+              style={{ background: theme.navbarlogo }}>
               {isPlaying ? <FaPause size={20} /> : <FaPlay size={20} />}
             </button>
 
@@ -110,12 +122,14 @@ function SurahView({ surahView }) {
               <TbReload size={20} />
             </button>
 
-            <button onClick={goNext} className="bg-green-600 hover:bg-green-700 text-white p-3 rounded-full shadow-lg transition duration-300">
+            <button onClick={goNext} className="text-white p-3 rounded-full shadow-lg transition duration-300"
+              style={{ background: theme.navbarlogo }}>
               <FaStepBackward size={20} />
             </button>
           </div>
 
-          <div className="mt-4 text-sm text-green-700 text-center cursor-pointer flex justify-center items-center gap-1 border border-green-400 rounded-md px-2 py-1 hover:bg-green-50 transition w-fit"
+          <div className="mt-4 text-sm text-center cursor-pointer flex justify-center items-center gap-1 rounded-md px-2 py-1 transition w-fit"
+            style={{ border: `1px solid ${theme.navbarlogo}`, color: theme.navbarlogo }}
             onClick={() => {
               const el = document.getElementById(`ayah-${currentAyahIndex}`);
               if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -138,7 +152,15 @@ function SurahView({ surahView }) {
               <span
                 id={`ayah-${index}`}
                 onClick={() => { setCurrentAyahIndex(index); setIsPlaying(true); document.getElementById(`ayah-${index}`)?.scrollIntoView({ behavior: "smooth", block: "center" }); }}
-                className={isPlaying ? index === currentAyahIndex ? "bg-green-100 text-green-800 px-2 rounded-lg transition-all duration-300 cursor-pointer" : "opacity-40 transition-all duration-300 cursor-pointer" : "cursor-pointer"}
+                className={isPlaying ? index === currentAyahIndex ? "px-2 rounded-lg transition-all duration-300 cursor-pointer" : "opacity-40 transition-all duration-300 cursor-pointer" : "cursor-pointer"}
+                style={
+                  isPlaying && index === currentAyahIndex
+                    ? {
+                      color: theme.quranpagetext,
+                      background: theme.quranpageayahplaybg,
+                    }
+                    : { color: theme.quranpagetext, }
+                }
               >
                 {text}
               </span>
@@ -197,10 +219,21 @@ function SurahView({ surahView }) {
                     });
                   }
                 }}
-                className={`mr-2 inline-flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 cursor-pointer font-semibold rounded-full transition-all duration-300 ease-in-out
-                  ${savedAyah === ayah.numberInSurah ? "bg-orange-600 text-white scale-110 shadow-lg animate-pulse" : "bg-green-200 text-green-800 hover:bg-green-600 hover:text-white hover:scale-110"}
-                  ${isPlaying ? index === currentAyahIndex ? "" : "opacity-40" : ""}
-                `}
+                className={`mr-2 inline-flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 md:w-9 md:h-9 cursor-pointer font-medium rounded-full transition-all duration-300 ease-in-out
+  ${savedAyah === ayah.numberInSurah
+                    ? "bg-orange-600 text-white scale-110 shadow-lg animate-pulse"
+                    : "hover:scale-110"}
+  ${isPlaying ? (index === currentAyahIndex ? "" : "opacity-40") : ""}
+`}
+                style={
+                  savedAyah === ayah.numberInSurah
+                    ? {}
+                    : {
+                      background: theme.quranpageayahbg,
+                      color: theme.quranpageayahtext,
+                      border: `2px solid ${theme.quranpageayahtext}`
+                    }
+                }
               >
                 {savedAyah === ayah.numberInSurah ? <FaStar className="w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5" /> : ayah.numberInSurah}
               </span>{" "}
@@ -209,7 +242,7 @@ function SurahView({ surahView }) {
         })}
       </p>
 
-      <p className="text-lg sm:text-xl md:text-3xl lg:text-4xl text-center text-green-700 font-bold my-6">
+      <p className="text-lg sm:text-xl md:text-3xl lg:text-4xl text-center text-green-700 font-bold my-6" style={{ color: `${theme.navbarlogo}` }}>
         صدق الله العظيم
       </p>
     </div>

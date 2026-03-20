@@ -26,7 +26,7 @@ function SurahSelect({ onSelect }) {
               </span>
 
               <span className="text-green-700">
-                {surah.number}. {surah.englishName}
+                {surah.number}. {surah.englishName}:  {surah.revelationType}
               </span>
             </div>
           </div>

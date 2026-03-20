@@ -8,14 +8,18 @@ import { useAuth } from "../context/AuthContext.jsx"
 import assest from '../assets/asset2.png'
 import Swal from "sweetalert2";
 import successIcon from "../assets/success.png";
+import ThemeToggle from "../components/ThemeToggle.jsx"
+import { useTheme } from "../context/ThemeContext";
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
     const visibleIndexes = [0, 1, 2, 7];
     const { user, logout } = useAuth();
+    const { theme } = useTheme();
 
     return (
-        <nav className="bg-white shadow-md border-b border-green-100 w-full h-16 fixed top-0 z-100">
+        <nav className="shadow-md  w-full h-16 fixed top-0 z-100"
+            style={{ background: theme.navbar }}>
             <div className="max-w-7xl mx-auto px-6">
                 <div className="flex justify-between items-center h-16">
 
@@ -25,14 +29,16 @@ function Navbar() {
                     >
                         <div className='flex justify-center items-center gap-2'>
                             <img src="/Icon.png" alt="Muslim Planner Logo" className="h-7 w-7" />
-                            <span className="text-2xl font-bold text-green-600">
+                            <span className="text-2xl font-bold"
+                                style={{ color: theme.navbarlogo }}>
                                 Muslim Planner
                             </span>
                         </div>
                     </Link>
 
                     {/* Desktop */}
-                    <div className="hidden navbar:flex space-x-8 text-gray-700 font-medium">
+                    <div className="hidden navbar:flex space-x-8 font-medium"
+                        style={{ color: theme.navbarlinks }}>
                         {links
                             .filter((_, index) => visibleIndexes.includes(index))
                             .map((link) => (
@@ -42,15 +48,25 @@ function Navbar() {
                                     onClick={scrollToTop}
                                     className={({ isActive }) =>
                                         isActive
-                                            ? "text-green-600 font-semibold border-b-2 border-green-600"
+                                            ? "font-semibold border-b-2"
                                             : "hover:text-[#eeb703] transition"
+                                    }
+                                    style={({ isActive }) =>
+                                        isActive
+                                            ? {
+                                                color: theme.navbaractivelink,
+                                                borderColor: theme.navbaractivelink,
+                                            }
+                                            : {}
                                     }
                                 >
                                     {link.name}
                                 </NavLink>
                             ))}
                     </div>
-                    <div className="hidden navbar:flex p-4 border-t border-gray-300">
+
+                    <div className='hidden navbar:flex gap-4'>
+
                         <button
                             onClick={async () => {
                                 const result = await Swal.fire({
@@ -89,22 +105,28 @@ function Navbar() {
                                     });
                                 }
                             }}
-                            className="w-full flex items-center justify-center gap-2 
+                            className="flex items-center justify-center
                                 bg-red-500 hover:bg-red-600 
                                 text-white font-semibold py-2 px-4 
-                                rounded-xl transition-all duration-200 
-                                shadow-md hover:shadow-lg"
-                            >
+                                rounded-xl
+                                 hover:shadow-lg shadow-md"
+                        >
                             Logout
                         </button>
+
+                        <ThemeToggle />
                     </div>
+
+
+
 
                     {/* Mobile Button */}
                     <button
-                        className="md:hidden text-green-600 text-2xl"
+                        className="navbar:hidden text-2xl"
+                        style={{ color: theme.navbarmenu }}
                         onClick={() => setIsOpen(!isOpen)}
                     >
-                        {isOpen ? " " : <BiMenu />}
+                        {isOpen ? <AiOutlineClose /> : <BiMenu />}
                     </button>
 
                 </div>
@@ -112,7 +134,7 @@ function Navbar() {
 
             {/* 🔥 Mobile Menu */}
             {isOpen && (
-                <div className="fixed inset-0 z-40 md:hidden">
+                <div className="fixed inset-0 z-40 navbar:hidden">
 
                     {/* 🔥 OVERLAY */}
                     <div
@@ -122,14 +144,19 @@ function Navbar() {
 
                     {/* 🔥 MENU */}
                     <div className="absolute top-16 right-0 h-[calc(100vh-64px)] w-72 
-                        bg-white shadow-xl flex flex-col overflow-hidden">
+                        shadow-xl flex flex-col overflow-hidden"
+                        style={{ background: theme.navbarmobile }}>
 
                         {/* 🔥 USER SECTION */}
-                        <div className="relative flex flex-col items-center w-full border-b border-gray-300">
+                        <div className="relative flex flex-col items-center w-full border-b"
+                            style={{ background: theme.navbarmobile }}>
 
                             {/* Avatar */}
                             <div
-                                className="w-full h-20 bg-cover bg-center bg-yellow-400"
+                                className="w-full h-20 bg-cover bg-center"
+                                style={{
+                                    background: "linear-gradient(90deg, #FFD700, #FFC300, #FFB700)",
+                                }}
                             /*style={{
                                 backgroundImage: `url(${assest})`,
                             }}*/
@@ -139,20 +166,23 @@ function Navbar() {
                             <img
                                 src={user?.avatar || assest}
                                 alt="user"
-                                className="w-28 h-28 rounded-full object-cover border-4 border-green-500 shadow-lg -mt-14 z-10 bg-gray-200"
+                                className="w-28 h-28 rounded-full object-cover -mt-14 z-10"
+                                style={{ background: theme.navbarmobile, border: `4px solid ${theme.navbarlogo}` }}
                             />
 
-                            <h3 className="mt-4 text-xl font-bold text-gray-800 text-center z-10 relative">
-                                {user?.username || "Guest"}
+                            <h3 className="mt-4 text-xl font-bold text-center z-10 relative"
+                                style={{ color: theme.navbarmobilelinks }}>
+                                {user?.username || "Jhon"} {user?.famillyname || ""}
                             </h3>
 
-                            <p className="mb-5 text-sm text-gray-500 mt-1 relative z-10">
+                            <p className="mb-5 text-sm  mt-1 relative z-10"
+                                style={{ color: theme.navbarmobilelinks }}>
                                 {user?.email || "guest@example.com"}
                             </p>
                         </div>
 
                         {/* LINKS */}
-                        <div className="flex-1 overflow-y-auto p-4 space-y-3 text-gray-700 font-medium">
+                        <div className="flex-1 overflow-y-auto p-4 space-y-3 font-medium ">
                             {links.map((link) => (
                                 <NavLink
                                     key={link.name}
@@ -162,11 +192,19 @@ function Navbar() {
                                         scrollToTop();
                                     }}
                                     className={({ isActive }) =>
-                                        `block px-4 py-3 rounded-lg transition-all duration-200
-                            ${isActive
-                                            ? "bg-green-600 text-white font-semibold"
-                                            : "hover:bg-[#eeb703] hover:text-white"
+                                        `block px-4 py-2 rounded-lg transition-all duration-200
+                                         ${isActive
+                                            ? "font-semibold"
+                                            : "hover:bg-[#ffb70054] hover:font-semibold "
                                         }`
+                                    }
+                                    style={({ isActive }) =>
+                                        isActive
+                                            ? {
+                                                color: theme.navbarmobileactivelink,
+                                                background: theme.navbaractivelink,
+                                            }
+                                            : { color: theme.navbarmobilelinks }
                                     }
                                 >
                                     {link.name}
@@ -175,7 +213,8 @@ function Navbar() {
                         </div>
 
                         {/* LOGOUT */}
-                        <div className="p-4 border-t border-gray-200">
+                        <div className="flex gap-3 justify-center items-center p-4  border-t border-gray-200">
+                            <ThemeToggle />
                             <button
                                 onClick={async () => {
                                     const result = await Swal.fire({
@@ -216,10 +255,10 @@ function Navbar() {
                                 }}
                                 className="w-full flex items-center justify-center gap-2 
                                     bg-red-500 hover:bg-red-600 
-                                    text-white font-semibold py-3 px-4 
+                                    text-white font-semibold py-2 px-4 
                                     rounded-xl transition-all duration-200 
                                     shadow-md hover:shadow-lg"
-                                >
+                            >
                                 Logout
                             </button>
                         </div>

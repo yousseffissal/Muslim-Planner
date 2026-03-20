@@ -7,6 +7,7 @@ import { scrollToTop } from '../tools/ScrollTop'
 import { AiOutlineLeft } from "react-icons/ai";
 import { AiOutlineRight } from "react-icons/ai";
 import { getProgress } from "../services/QuranService";
+import { useTheme } from "../context/ThemeContext";
 
 function QuranPage() {
 
@@ -22,6 +23,7 @@ function QuranPage() {
   const [selectedSurah, setSelectedSurah] = useState(null);
   const [showList, setShowList] = useState(false);
   const [savedProgress, setSavedProgress] = useState(null);
+  const { theme } = useTheme();
 
   const loadProgress = async () => {
     try {
@@ -49,7 +51,7 @@ function QuranPage() {
       className="w-full md:p-4 p-2 bg-no-repeat bg-center bg-cover"
       style={{
         backgroundImage: result ? "none" : `url(${background})`,
-        backgroundColor: result ? "#e6f9e6" : "transparent",
+        backgroundColor: result ? `${theme.quranpage}` : "transparent",
         minHeight: "100vh"
       }}
     >
@@ -63,9 +65,10 @@ function QuranPage() {
                   handleSelect(selectedSurah - 1);
                 }
               }}
-              className={`px-3 py-2 sm:px-6 sm:py-3 rounded-xl bg-green-500 text-white hover:bg-green-600 transition ${selectedSurah === 1 ? "opacity-50 cursor-not-allowed" : ""
+              className={`px-3 py-2 sm:px-6 sm:py-3 rounded-xl text-white transition ${selectedSurah === 1 ? "opacity-50 cursor-not-allowed" : ""
                 }`}
               disabled={selectedSurah === 1}
+              style={{ background: theme.navbarlogo }}
             >
               <AiOutlineLeft />
             </button>
@@ -78,7 +81,8 @@ function QuranPage() {
               setShowList(!showList);
               setSelectedSurah(null);
             }}
-            className="px-3 py-2 sm:px-6 sm:py-3 bg-white rounded-xl text-green-900 text-lg hover:bg-green-200 transition flex-1"
+            className="px-3 py-2 sm:px-6 rounded-xl sm:py-3 text-lg transition flex-1"
+            style={{ background: theme.card, color: theme.cardtext }}
           >
             {selectedSurah ? `Surah Number ${selectedSurah}` : "Select a Surah"}
           </button>
@@ -90,8 +94,9 @@ function QuranPage() {
                   handleSelect(selectedSurah + 1);
                 }
               }}
-              className={`px-3 py-2 sm:px-6 sm:py-3 rounded-xl bg-green-500 text-white hover:bg-green-600 transition ${selectedSurah === 114 ? "opacity-50 cursor-not-allowed" : ""}`}
+              className={`px-3 py-2 sm:px-6 sm:py-3 rounded-xl  text-white transition ${selectedSurah === 114 ? "opacity-50 cursor-not-allowed" : ""}`}
               disabled={selectedSurah === 114}
+              style={{ background: theme.navbarlogo }}
             >
               <AiOutlineRight />
             </button>
@@ -186,9 +191,11 @@ function QuranPage() {
 
         </div>
       )}
+
       {selectedSurah && (
-        <div className="w-full mx-auto bg-white md:p-6 p-4 md:rounded-[36px] rounded-[28px] shadow">
-          {loading && <p className="text-center text-green-900">Loading...</p>}
+        <div className="w-full mx-auto md:p-6 p-4 md:rounded-[36px] rounded-[28px] shadow"
+        style={{background: theme.card}}>
+          {loading && <p className="text-center" style={{color: theme.cardtext}}>Loading...</p>}
           {error && <p className="text-center text-red-600">{error}</p>}
           {result && (
             <SurahView
@@ -202,7 +209,8 @@ function QuranPage() {
       {selectedSurah &&
         <button
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 w-12 h-12 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition flex items-center justify-center"
+          className="fixed bottom-6 right-6 w-12 h-12 text-white rounded-full shadow-lg  transition flex items-center justify-center"
+          style={{background: theme.navbarlogo}}
           title="Back to Top"
         >
           Top
