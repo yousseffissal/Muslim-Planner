@@ -2,18 +2,28 @@ import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
 import { Outlet } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { useTheme } from "./context/ThemeContext";
 import Footer from './components/Footer'
 
 function App() {
 
   const [isSidebarVisible, setIsSidebarVisible] = useState(false)
+   const { theme } = useTheme();
 
   useEffect(() => {
-    const handleResize = () => setIsSidebarVisible(window.innerWidth >= 770)
+    const handleResize = () => setIsSidebarVisible(window.innerWidth >= 925)
     handleResize()
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
+
+  useEffect(() => {
+  const root = document.documentElement;
+
+  root.style.setProperty("--scroll-track", theme.scrollTrack);
+  root.style.setProperty("--scroll-thumb", theme.scrollThumb);
+  root.style.setProperty("--scroll-thumb-hover", theme.scrollThumbHover);
+}, [theme]);
 
   return (
     <div className="min-h-screen bg-gray-100">
