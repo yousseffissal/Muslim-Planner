@@ -77,6 +77,15 @@ export default function Register() {
             required
             className="border border-green-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
           />
+           <input
+            type="text"
+            name="famillyname"
+            placeholder="Familly name"
+            value={form.famillyname}
+            onChange={handleChange}
+            required
+            className="border border-green-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
+          />
           <input
             type="email"
             name="email"
