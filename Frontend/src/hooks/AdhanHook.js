@@ -56,6 +56,8 @@ export const AdhanHook = () => {
         setDate,
         setCity,
         fetchAdhan,
+        setError,
+        setSuccessMsg
     }
 
 }
