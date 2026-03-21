@@ -85,7 +85,7 @@ function SurahView({ surahView }) {
       </h1>
 
       {showBismillah && (
-        <p className=" text-center my-3">
+        <p className=" text-center mb-3">
           <img src={
             mode === "light"
               ? bismilah
@@ -220,11 +220,11 @@ function SurahView({ surahView }) {
                   }
                 }}
                 className={`mr-2 inline-flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 md:w-9 md:h-9 cursor-pointer font-medium rounded-full transition-all duration-300 ease-in-out
-  ${savedAyah === ayah.numberInSurah
+                ${savedAyah === ayah.numberInSurah
                     ? "bg-orange-600 text-white scale-110 shadow-lg animate-pulse"
                     : "hover:scale-110"}
-  ${isPlaying ? (index === currentAyahIndex ? "" : "opacity-40") : ""}
-`}
+                ${isPlaying ? (index === currentAyahIndex ? "" : "opacity-40") : ""}
+              `}
                 style={
                   savedAyah === ayah.numberInSurah
                     ? {}

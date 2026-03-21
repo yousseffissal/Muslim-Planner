@@ -116,51 +116,65 @@ function QuranPage() {
 
       </div>
 
-
       {!showList && !selectedSurah && (
-        <div className="w-full flex items-center justify-center md:p-6 p-4">
+        <div className="w-full flex mt-6 justify-center px-4">
 
-          <div className="
-            relative overflow-hidden
-            bg-gradient-to-br from-green-100 via-white to-green-50
-            border border-green-200
-            shadow-2xl
-            rounded-3xl
-            p-10 md:p-16
-            text-center
-            max-w-3xl w-full
-          ">
+          <div
+            className="max-w-2xl w-full rounded-2xl p-8 md:p-10 text-center shadow-xl transition-all duration-300 hover:shadow-2xl"
+            style={{ background: theme.card }}
+          >
 
-            <div className="absolute -top-10 -right-10 w-40 h-40 bg-green-300 opacity-20 rounded-full blur-3xl"></div>
-            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-emerald-400 opacity-20 rounded-full blur-3xl"></div>
-
-            <div className="flex justify-center mb-6">
-              <div className="w-20 h-20 flex items-center justify-center rounded-full bg-green-600 text-white text-3xl shadow-lg">
+            {/* Icon */}
+            <div className="flex justify-center mb-5">
+              <div
+                className="w-14 h-14 flex items-center justify-center rounded-full text-xl shadow"
+                style={{ background: theme.navbarlogo }}
+              >
                 📖
               </div>
             </div>
 
-            <h2 className="text-3xl md:text-5xl font-extrabold text-green-900 mb-6 leading-tight">
+            {/* Title */}
+            <h2
+              className="text-2xl md:text-3xl font-bold mb-3"
+              style={{ color: theme.navbarlogo }}
+            >
               Welcome to the Holy Quran Section
             </h2>
 
-            <p className="text-lg md:text-xl text-green-800 leading-relaxed max-w-xl mx-auto">
+            {/* Description */}
+            <p
+              className="text-base md:text-lg leading-relaxed opacity-90 mb-4"
+              style={{ color: theme.cardtext }}
+            >
               Select a Surah from the list to explore its verses and reflect on their meanings in a peaceful reading experience.
             </p>
 
-            <p className="mt-6 text-sm md:text-base text-green-900/70 leading-relaxed">
+            {/* API note */}
+            <p
+              className="text-sm opacity-70"
+              style={{ color: theme.cardtext }}
+            >
               This app uses{" "}
               <a
                 href="https://alquran.cloud/api"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-emerald-700 hover:text-emerald-900 underline decoration-2 underline-offset-4 transition"
+                className="underline underline-offset-2 font-medium"
+                style={{ color: theme.navbarlogo }}
               >
                 AlQuran.cloud API
               </a>{" "}
               to fetch Quran data.
             </p>
 
+            {/* Divider */}
+            <div
+              className="my-6 h-px w-full opacity-20"
+              style={{ background: theme.cardtext }}
+            ></div>
+
+            {/* Button */}
             {savedProgress && (
               <button
                 onClick={() => {
@@ -171,17 +185,8 @@ function QuranPage() {
                     if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
                   }, 500);
                 }}
-                className="
-                  mt-10 px-8 py-4
-                  bg-gradient-to-r from-green-600 to-emerald-500
-                  hover:from-green-700 hover:to-emerald-600
-                  text-white font-semibold
-                  rounded-2xl
-                  shadow-xl
-                  transition-all duration-300
-                  hover:scale-105
-                  active:scale-95
-                "
+                className="px-6 py-3 rounded-lg font-medium shadow-md transition-all duration-300 hover:scale-[1.03] active:scale-95"
+                style={{ background: theme.navbarlogo, color: "#fff" }}
               >
                 📍 Continue Reading (Ayah {savedProgress.ayah} Surah {savedProgress.surah})
               </button>
@@ -194,8 +199,8 @@ function QuranPage() {
 
       {selectedSurah && (
         <div className="w-full mx-auto md:p-6 p-4 md:rounded-[36px] rounded-[28px] shadow"
-        style={{background: theme.card}}>
-          {loading && <p className="text-center" style={{color: theme.cardtext}}>Loading...</p>}
+          style={{ background: theme.card }}>
+          {loading && <p className="text-center" style={{ color: theme.cardtext }}>Loading...</p>}
           {error && <p className="text-center text-red-600">{error}</p>}
           {result && (
             <SurahView
@@ -210,7 +215,7 @@ function QuranPage() {
         <button
           onClick={scrollToTop}
           className="fixed bottom-6 right-6 w-12 h-12 text-white rounded-full shadow-lg  transition flex items-center justify-center"
-          style={{background: theme.navbarlogo}}
+          style={{ background: theme.navbarlogo }}
           title="Back to Top"
         >
           Top

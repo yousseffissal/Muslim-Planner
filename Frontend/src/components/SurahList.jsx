@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { useTheme } from "../context/ThemeContext";
 
 function SurahSelect({ onSelect }) {
   const [surahs, setSurahs] = useState([]);
+  const { theme } = useTheme();
 
   useEffect(() => {
     fetch("https://api.alquran.cloud/v1/surah")
@@ -16,16 +18,20 @@ function SurahSelect({ onSelect }) {
           <div
             key={surah.number}
             onClick={() => onSelect(surah.number)}
-            className={`p-4 rounded-xl cursor-pointer transition 
-              ${index % 2 === 0 ? "bg-white" : "bg-green-50"}
-              hover:bg-green-200 hover:scale-[1.01]`}
+            className={`p-4 rounded-xl cursor-pointer transition hover:scale-[1.01]`}
+            style={{
+              backgroundColor: index % 2 === 0
+                ? theme.surahlist1
+                : theme.surahlist2
+            }}
           >
             <div className="flex justify-between items-center">
-              <span className="text-lg font-semibold text-green-900">
+              <span className="text-lg font-semibold"
+                style={{ color: theme.surahlisttext }}>
                 {surah.name}
               </span>
 
-              <span className="text-green-700">
+              <span style={{ color: theme.surahlisttext }}>
                 {surah.number}. {surah.englishName}:  {surah.revelationType}
               </span>
             </div>
