@@ -16,13 +16,19 @@ export const themes = {
         scrollThumbHover: "#137738",
 
         card: "#ffffff",
-        cardtext:"#374151",
+        cardtext: "#374151",
 
         quranpage: "#e6f9e6",
         quranpagetext: "#000000",
         quranpageayahtext: "#166534",
         quranpageayahbg: "#BBF7D0",
         quranpageayahplaybg: "#b6d6c1",
+
+        surahlist1: "#ffffff",
+        surahlist2: "#f0fdf4",
+        surahlisttext: "#14532d",
+
+        AdhanRed: "#991b1b"
     },
     dark: {
         navbar: "#1e1e1e",
@@ -41,12 +47,18 @@ export const themes = {
         scrollThumbHover: "#137738",
 
         card: "#303033",
-        cardtext:"#ffffff",
+        cardtext: "#ffffff",
 
         quranpage: "#131314",
         quranpagetext: "#ffffff",
         quranpageayahtext: "#07f763",
         quranpageayahbg: "transparent",
         quranpageayahplaybg: "#585e5a",
+
+        surahlist2: "#303033",
+        surahlist1: "#1f1f21",
+        surahlisttext: "#ffffff",
+
+        AdhanRed: "#ef4444"
     }
 };
