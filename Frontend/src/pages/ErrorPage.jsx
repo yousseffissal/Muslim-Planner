@@ -1,10 +1,12 @@
 import { useRouteError, isRouteErrorResponse } from "react-router-dom";
 import errorImage from "../assets/error404.jpg";
 import { useAuth } from "../context/AuthContext";
+import { useTheme } from "../context/ThemeContext";
 
 function ErrorPage() {
     const error = useRouteError();
     const { isAuthenticated } = useAuth();
+    const { theme } = useTheme();
 
     let title = "Something went wrong";
     let message = "An unexpected error occurred.";
@@ -18,10 +20,14 @@ function ErrorPage() {
     }
 
     return (
-        <div className="relative flex flex-col items-center justify-center min-h-screen bg-green-50">
-
+        <div className="relative flex flex-col items-center justify-center min-h-screen"
+            style={{ background: theme.quranpage }}>
             {/* Wrapper */}
-            <div className="flex flex-col text-center text-black px-6 w-fit h-fit justify-center items-center">
+            <div className="flex flex-col text-center px-6 w-fit h-fit justify-center items-center"
+                style={{
+                    background: theme.quranpage,
+                    color: theme.cardtext
+                }}>
 
                 {/* Error Illustration */}
                 <img
@@ -31,7 +37,8 @@ function ErrorPage() {
                 />
 
                 {/* Error Title */}
-                <h1 className="text-4xl font-bold mb-4 text-green-700">
+                <h1 className="text-4xl font-bold mb-4"
+                    style={{ color: theme.navbarlogo }}>
                     {title}
                 </h1>
 
@@ -43,7 +50,11 @@ function ErrorPage() {
                 {/* Back Home Button */}
                 <a
                     href={isAuthenticated ? "/app/dashboard" : "/"}
-                    className="inline-block bg-green-600 text-white rounded-full px-6 py-2 text-sm font-medium border border-green-600 transition-all duration-300 ease-in-out hover:bg-transparent hover:text-green-600"
+                    className="inline-block text-white rounded-full px-6 py-2 text-sm font-medium transition-all duration-300 ease-in-out"
+                    style={{
+                        background: theme.navbarlogo,
+                        border: `1px solid ${theme.navbarlogo}`
+                    }}
                 >
                     Back to the Homepage
                 </a>

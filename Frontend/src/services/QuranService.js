@@ -20,7 +20,6 @@ export const saveProgress = async (surah, ayah) => {
 export const getProgress = async () => {
   try {
     const res = await api.get("/user/quran/progress");
-    console.log("API Response:", res.data);
     return res.data.progress;
   } catch (err) {
     const message =

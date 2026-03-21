@@ -28,8 +28,6 @@ function QuranPage() {
   const loadProgress = async () => {
     try {
       const progress = await getProgress();
-
-      console.log("Progress from DB:", progress);
       setSavedProgress(progress)
     } catch (err) {
       console.error("Failed to load progress", err);
