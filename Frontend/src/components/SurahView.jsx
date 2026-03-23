@@ -123,7 +123,7 @@ function SurahView({ surahView }) {
             className="absolute top-0 left-0 w-full h-full"
             style={{
               zIndex: 1,
-              background: isPlaying ? 'linear-gradient(to left, rgba(0,0,0,0.6), rgba(0,0,0,0))': "transparent", // تغطية تدريجية
+              background: isPlaying ? mode===dark? 'linear-gradient(to left, rgba(0,0,0,0.6), rgba(0,0,0,0))': "transparent" : "transparent", // تغطية تدريجية
             }}
           />
 
