@@ -2,10 +2,13 @@ import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
 import bg from "../assets/background2.jpg"
+import { useTheme } from "../context/ThemeContext";
+import ThemeToggle from "../components/ThemeToggle.jsx"
 
 export default function LandingPage() {
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
+   const { theme } = useTheme();
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -13,18 +16,37 @@ export default function LandingPage() {
     }
   }, [isAuthenticated, navigate]);
 
+
+  useEffect(() => {
+    const root = document.documentElement;
+  
+    root.style.setProperty("--scroll-track", theme.scrollTrack);
+    root.style.setProperty("--scroll-thumb", theme.scrollThumb);
+    root.style.setProperty("--scroll-thumb-hover", theme.scrollThumbHover);
+  }, [theme]);
+  
+
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans">
       {/* Navbar */}
-      <header className="flex justify-between items-center px-8 py-6 shadow-md">
-        <h1 className="text-2xl font-bold text-green-700">Muslim Planner</h1>
-        <nav className="space-x-4">
+      <header className="flex justify-between items-center px-5 py-5 shadow-md">
+
+        <div className='flex justify-center items-center gap-2'>
+          <img src="/Icon.png" alt="Muslim Planner Logo" className="h-7 w-7" />
+          <span className="text-2xl font-bold"
+            style={{ color: theme.navbarlogo }}>
+            Muslim Planner
+          </span>
+        </div>
+
+        <nav className="flex gap-2">
           <Link
             to="/login"
             className="bg-green-700 hover:bg-green-800 text-white px-5 py-2 rounded-lg text-sm font-medium transition"
           >
             Login
           </Link>
+          <ThemeToggle />
         </nav>
       </header>
 
