@@ -8,6 +8,8 @@ import { AiOutlineLeft } from "react-icons/ai";
 import { AiOutlineRight } from "react-icons/ai";
 import { getProgress } from "../services/QuranService";
 import { useTheme } from "../context/ThemeContext";
+import { useReader } from "../context/ReaderContext";
+import { useAuth } from "../context/AuthContext.jsx" 
 
 function QuranPage() {
 
@@ -18,6 +20,8 @@ function QuranPage() {
     setResult,
     fetchQuranSurah
   } = QuranHook();
+
+  const { selectedReader } = useReader();
 
 
   const [selectedSurah, setSelectedSurah] = useState(null);
@@ -41,8 +45,14 @@ function QuranPage() {
   const handleSelect = (number) => {
     setSelectedSurah(number);
     setShowList(false);
-    fetchQuranSurah(number).then(() => scrollToTop());
+    fetchQuranSurah(number, selectedReader?.identifier || "ar.alafasy").then(() => scrollToTop());
   };
+
+  useEffect(() => {
+    if (selectedSurah && selectedReader) {
+      fetchQuranSurah(selectedSurah, selectedReader?.identifier || "ar.alafasy")
+    }
+  }, [selectedReader]);
 
   return (
     <div

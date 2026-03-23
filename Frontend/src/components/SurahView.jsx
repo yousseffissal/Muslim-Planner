@@ -7,7 +7,8 @@ import { saveProgress, getProgress } from "../services/QuranService";
 import Swal from "sweetalert2";
 import successIcon from "../assets/success.png";
 import { useTheme } from "../context/ThemeContext";
-
+import QuranReaderSelector from "./Readers.jsx";
+import { useReader } from "../context/ReaderContext";
 
 function SurahView({ surahView }) {
   const [surah, setSurah] = useState();
@@ -16,6 +17,7 @@ function SurahView({ surahView }) {
   const [savedAyah, setSavedAyah] = useState(null);
   const { theme, mode } = useTheme();
   const audioRef = useRef(null);
+  const { selectedReader } = useReader();
 
   // تشغيل وإيقاف الصوت
   const togglePlay = () => {
@@ -79,6 +81,7 @@ function SurahView({ surahView }) {
   const showBismillah = surah.number !== 9;
 
   return (
+
     <div className="w-full text-right font-serif" style={{ direction: "rtl", fontFamily: "'Scheherazade New', serif" }}>
       <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl text-center font-bold mb-6 p-4 rounded-xl" style={{ border: `1px solid ${theme.navbarlogo}`, color: `${theme.navbarlogo}` }}>
         {surah.name} - {surah.englishName}
@@ -96,46 +99,80 @@ function SurahView({ surahView }) {
 
       {/* مشغل الصوت */}
       <div className="flex justify-center items-center mb-8">
-        <div className="flex flex-col justify-center items-center bg-transparent border-2  shadow-lg rounded-2xl p-6 w-full max-w-xl"
+        <div className="relative flex flex-col justify-center items-center bg-transparent border-2 shadow-lg rounded-2xl p-6 w-full max-w-xl overflow-hidden "
           style={{ border: `2px solid ${theme.navbarlogo}` }}>
-          <h2 className="font-bold text-lg mb-4 text-center"
-            style={{ color: theme.navbarlogo }}>
-            {!isPlaying ? "🎧 تشغيل السورة" : "🎧 إيقاف السورة"}
-          </h2>
 
-          <audio ref={audioRef} onEnded={handleEnded} className="w-full rounded-lg">
-            <source src={surah.ayahs[currentAyahIndex].audio} type="audio/mpeg" />
-          </audio>
-
-          <div className="flex justify-center items-center gap-4 mt-4">
-            <button onClick={goBack} className="text-white p-3 rounded-full shadow-lg transition duration-300"
-              style={{ background: theme.navbarlogo }}>
-              <FaStepForward size={20} />
-            </button>
-
-            <button onClick={togglePlay} className="text-white p-3 rounded-full shadow-lg transition duration-300"
-              style={{ background: theme.navbarlogo }}>
-              {isPlaying ? <FaPause size={20} /> : <FaPlay size={20} />}
-            </button>
-
-            <button onClick={() => { setCurrentAyahIndex(0); setIsPlaying(true); }} className="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg transition duration-300">
-              <TbReload size={20} />
-            </button>
-
-            <button onClick={goNext} className="text-white p-3 rounded-full shadow-lg transition duration-300"
-              style={{ background: theme.navbarlogo }}>
-              <FaStepBackward size={20} />
-            </button>
-          </div>
-
-          <div className="mt-4 text-sm text-center cursor-pointer flex justify-center items-center gap-1 rounded-md px-2 py-1 transition w-fit"
-            style={{ border: `1px solid ${theme.navbarlogo}`, color: theme.navbarlogo }}
-            onClick={() => {
-              const el = document.getElementById(`ayah-${currentAyahIndex}`);
-              if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+          <img
+            src={selectedReader?.url}
+            alt={selectedReader?.name}
+            className="absolute top-0 left-0 w-full h-full object-cover"
+            style={{
+              zIndex: 0,
+              maskImage: 'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0.4) 70%, rgba(0,0,0,0) 100%)',
+              WebkitMaskImage: 'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0.4) 70%, rgba(0,0,0,0) 100%)',
+              maskRepeat: 'no-repeat',
+              maskSize: 'cover',
+              WebkitMaskRepeat: 'no-repeat',
+              WebkitMaskSize: 'cover',
+              opacity: isPlaying ? 0.6 : 0, 
             }}
-          >
-            📍 اضغط للذهاب إلى الآية {currentAyahIndex + 1} من {surah.ayahs.length}
+          />
+
+          {/* طبقة مظلمة Overlay */}
+          <div
+            className="absolute top-0 left-0 w-full h-full"
+            style={{
+              zIndex: 1,
+              background: isPlaying ? 'linear-gradient(to left, rgba(0,0,0,0.6), rgba(0,0,0,0))': "transparent", // تغطية تدريجية
+            }}
+          />
+
+
+
+
+
+          {/* محتوى الصوت */}
+          <div className="relative z-10 w-full flex flex-col items-center">
+            <h2 className="font-bold text-lg mb-4 text-center" style={{ color: theme.navbarlogo }}>
+              {!isPlaying ? "🎧 تشغيل السورة" : "🎧 إيقاف السورة"}
+            </h2>
+
+            <audio ref={audioRef} onEnded={handleEnded} className="w-full rounded-lg">
+              <source src={surah.ayahs[currentAyahIndex].audio} type="audio/mpeg" />
+            </audio>
+
+            <div className="flex justify-center items-center gap-4 mt-4">
+              <button onClick={goBack} className="text-white p-3 rounded-full shadow-lg transition duration-300"
+                style={{ background: theme.navbarlogo }}>
+                <FaStepForward size={20} />
+              </button>
+
+              <button onClick={togglePlay} className="text-white p-3 rounded-full shadow-lg transition duration-300"
+                style={{ background: theme.navbarlogo }}>
+                {isPlaying ? <FaPause size={20} /> : <FaPlay size={20} />}
+              </button>
+
+              <button onClick={() => { setCurrentAyahIndex(0); setIsPlaying(true); }}
+                className="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg transition duration-300">
+                <TbReload size={20} />
+              </button>
+
+              <button onClick={goNext} className="text-white p-3 rounded-full shadow-lg transition duration-300"
+                style={{ background: theme.navbarlogo }}>
+                <FaStepBackward size={20} />
+              </button>
+            </div>
+
+            <div className="my-4 text-sm text-center cursor-pointer flex justify-center items-center gap-1 rounded-md px-2 py-1 transition w-fit"
+              style={{ border: `1px solid ${theme.navbarlogo}`, color: theme.navbarlogo }}
+              onClick={() => {
+                const el = document.getElementById(`ayah-${currentAyahIndex}`);
+                if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+              }}
+            >
+              📍 اضغط للذهاب إلى الآية {currentAyahIndex + 1} من {surah.ayahs.length}
+            </div>
+            <QuranReaderSelector />
           </div>
         </div>
       </div>
@@ -246,6 +283,7 @@ function SurahView({ surahView }) {
         صدق الله العظيم
       </p>
     </div>
+
   );
 }
 

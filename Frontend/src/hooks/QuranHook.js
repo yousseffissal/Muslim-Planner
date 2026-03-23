@@ -8,14 +8,14 @@ export const QuranHook = () => {
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false);
 
-    const fetchQuranSurah = async (number) => {
+    const fetchQuranSurah = async (number, selectedReader) => {
         try {
             setLoading(true);
             setError('')
             setResult(null)
 
             const response = await axios.get(
-                `${API_URL}/Quran/quranSurah/${number}`
+                `${API_URL}/Quran/quranSurah/${number}/${selectedReader}`
             )
             setResult(response.data)
 
