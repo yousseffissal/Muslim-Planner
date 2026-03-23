@@ -279,9 +279,10 @@ function SurahView({ surahView }) {
         })}
       </p>
 
-      <p className="text-lg sm:text-xl md:text-3xl lg:text-4xl text-center text-green-700 font-bold my-6" style={{ color: `${theme.navbarlogo}` }}>
+      {/*<p className="text-lg sm:text-xl md:text-3xl lg:text-4xl text-center text-green-700 font-bold my-6" style={{ color: `${theme.navbarlogo}` }}>
         صدق الله العظيم
-      </p>
+      </p>*/}
+      
     </div>
 
   );
