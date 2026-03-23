@@ -1,9 +1,10 @@
 const FetchQuranSurah = async (req, res) => {
     const surahnumber = req.params.surahnumber;
+    const reader = req.params.reader;
     
     try {
         const response = await fetch(
-            `https://api.alquran.cloud/v1/surah/${surahnumber}/ar.alafasy`
+            `https://api.alquran.cloud/v1/surah/${surahnumber}/${reader}`
         );
 
         if (!response.ok) {

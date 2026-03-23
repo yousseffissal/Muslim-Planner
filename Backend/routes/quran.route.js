@@ -2,6 +2,6 @@ const express = require('express');
 const router = express.Router();
 const { FetchQuranSurah } = require('../controllers/quran.controller');
 
-router.get('/quranSurah/:surahnumber', FetchQuranSurah);
+router.get('/quranSurah/:surahnumber/:reader', FetchQuranSurah);
 
 module.exports = router;
