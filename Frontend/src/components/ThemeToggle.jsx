@@ -12,7 +12,7 @@ function ThemeToggle() {
         color: mode === "light" ? "#f9fafb" : "#111827"
       }}
     >
-      {mode === "light" ? "🌙 Dark" : "☀️ Light"}
+      {mode === "light" ? "🌙" : "☀️"}
     </button>
   );
 }
