@@ -28,7 +28,7 @@ export const arabicQuranReaders = [
     identifier: "ar.saoodshuraym",
     name: "سعود الشريم",
     englishName: "Saood Al Shuraim",
-    url: "https://tecvitli.com/wp-content/uploads/2024/07/%D8%A7%D9%84%D8%B4%D9%8A%D8%AE-%D8%B3%D8%B9%D9%88%D8%AF-%D8%A7%D9%84%D8%B4%D8%B1%D9%8A%D9%85-1680073996-0.jpg",
+    url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4VKgfY6YESzRWk0Xx4xsPZ5G7Gwy8cCxxJQ&s",
   },
   {
     identifier: "ar.minshawi",

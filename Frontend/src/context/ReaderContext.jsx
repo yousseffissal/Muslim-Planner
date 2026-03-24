@@ -1,10 +1,11 @@
 // src/context/ReaderContext.js
 import { createContext, useContext, useState, useEffect } from "react";
+import { arabicQuranReaders as readers } from "../tools/readers";
 
 const ReaderContext = createContext();
 
 export const ReaderProvider = ({ children }) => {
-    const [selectedReader, setSelectedReader] = useState("");
+    const [selectedReader, setSelectedReader] = useState(readers[0]);
 
     useEffect(() => {
         const saved = localStorage.getItem("reader");

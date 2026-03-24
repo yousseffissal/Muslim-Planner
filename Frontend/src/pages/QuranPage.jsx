@@ -193,7 +193,7 @@ function QuranPage() {
                     if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
                   }, 500);
                 }}
-                className="px-6 py-3 rounded-lg font-medium shadow-md transition-all duration-300 hover:scale-[1.03] active:scale-95"
+                className="px-6 py-3 rounded-lg font-medium shadow-md md:text-base text-xs transition-all duration-300 hover:scale-[1.03] active:scale-95"
                 style={{ background: theme.navbarlogo, color: "#fff" }}
               >
                 📍 Continue Reading (Ayah {savedProgress.ayah} Surah {savedProgress.surah})
