@@ -112,15 +112,12 @@ export default function LandingPage() {
 
       {/* Developer Section */}
       <section className="px-6 py-24 flex justify-center items-center">
-        <div className="flex justify-center items-center rounded-[32px] p-2">
-
-        </div>
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-12 md:gap-20">
 
           {/* Image */}
           <div className="flex-shrink-0">
             <img
-              src="/me2.png"
+              src="/me.png"
               alt="Youssef Fissal"
               className="w-56 md:h-56 object-cover rounded-2xl shadow-lg"
             />
