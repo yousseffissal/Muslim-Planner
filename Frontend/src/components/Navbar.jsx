@@ -5,7 +5,8 @@ import { scrollToTop } from '../tools/ScrollTop'
 import { BiMenu } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
 import { useAuth } from "../context/AuthContext.jsx"
-import assest from '../assets/asset2.png'
+import male from '../assets/male.png'
+import female from '../assets/female.png'
 import Swal from "sweetalert2";
 import successIcon from "../assets/success.png";
 import ThemeToggle from "../components/ThemeToggle.jsx"
@@ -164,7 +165,7 @@ function Navbar() {
 
                             {/* Avatar */}
                             <img
-                                src={user?.avatar || assest}
+                                src={user?.gender ? user?.gender==="male" ? male : female : male}
                                 alt="user"
                                 className="w-28 h-28 rounded-full object-cover -mt-14 z-10"
                                 style={{ background: theme.navbarmobile, border: `4px solid ${theme.navbarlogo}` }}
