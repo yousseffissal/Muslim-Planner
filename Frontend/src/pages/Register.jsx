@@ -4,6 +4,7 @@ import { useAuth } from "../context/AuthContext.jsx";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import successIcon from "../assets/success.png";
+import { useTheme } from "../context/ThemeContext";
 
 
 export default function Register() {
@@ -12,6 +13,7 @@ export default function Register() {
   const [form, setForm] = useState({ username: "", email: "", password: "" });
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const { theme } = useTheme();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -30,8 +32,8 @@ export default function Register() {
         title: "Account created",
         text: "Your Account was created successfully!",
         imageUrl: successIcon,
-        imageWidth: 80, 
-        imageHeight: 80, 
+        imageWidth: 80,
+        imageHeight: 80,
         imageAlt: "Custom icon",
         confirmButtonText: "OK",
         customClass: {
@@ -40,7 +42,7 @@ export default function Register() {
           content: "swal-content-green",
           confirmButton: "swal-btn-green",
         },
-        buttonsStyling: false, 
+        buttonsStyling: false,
       });
     } catch (err) {
       setError(err.message);
@@ -60,14 +62,18 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-green-50 px-2">
-      <div className="bg-white shadow-2xl rounded-2xl p-10 w-full max-w-md animate-fadeIn">
-        <h1 className="text-3xl font-bold text-center mb-6 text-green-700">Register</h1>
+    <div className="min-h-screen flex items-center justify-center px-2"
+      style={{ background: theme.quranpage }}>
+      <div className="shadow-2xl rounded-2xl p-10 w-full max-w-md animate-fadeIn"
+        style={{ background: theme.card }}>
+        <h1 className="text-3xl font-bold text-center mb-6"
+          style={{ color: theme.navbarlogo }}>Register</h1>
 
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         {success && <p className="text-green-600 text-center mb-4">{success}</p>}
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5"
+          style={{ color: theme.cardtext }}>
           <input
             type="text"
             name="username"
@@ -75,17 +81,31 @@ export default function Register() {
             value={form.username}
             onChange={handleChange}
             required
-            className="border border-green-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
+            className="rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
+            style={{ background: theme.card, border: `1px solid ${theme.navbarlogo}` }}
           />
-           <input
+          <input
             type="text"
             name="famillyname"
             placeholder="Familly name"
             value={form.famillyname}
             onChange={handleChange}
             required
-            className="border border-green-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
+            className="rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
+            style={{ background: theme.card, border: `1px solid ${theme.navbarlogo}` }}
           />
+          <select
+            name="gender"
+            value={form.gender}
+            onChange={handleChange}
+            required
+            className="rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
+            style={{ background: theme.card, border: `1px solid ${theme.navbarlogo}` }}
+          >
+            <option value="" disabled>Select gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
           <input
             type="email"
             name="email"
@@ -93,7 +113,8 @@ export default function Register() {
             value={form.email}
             onChange={handleChange}
             required
-            className="border border-green-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
+            className="rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
+            style={{ background: theme.card, border: `1px solid ${theme.navbarlogo}` }}
           />
           <input
             type="password"
@@ -102,20 +123,30 @@ export default function Register() {
             value={form.password}
             onChange={handleChange}
             required
-            className="border border-green-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
+            className="rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
+            style={{ background: theme.card, border: `1px solid ${theme.navbarlogo}` }}
           />
           <button
             type="submit"
-            className="bg-green-600 text-white font-semibold py-3 rounded-lg hover:bg-green-700 transition-colors shadow-md"
+            className="text-white font-semibold py-3 rounded-lg transition-colors shadow-md"
+            style={{ background: theme.navbarlogo }}
           >
             Create Account
           </button>
         </form>
 
-        <p className="mt-6 text-center text-gray-600">
-          Already have an account?{" "}
-          <Link to="/login" className="text-green-600 font-medium hover:underline">
-            Login here
+        <p className="mt-6 text-center"
+          style={{ color: theme.cardtext }}>
+          <div>
+            Already have an account?{" "}
+            <Link to="/login" className="font-medium hover:underline"
+              style={{ color: theme.navbarlogo }}>
+              Login here
+            </Link>
+          </div>
+          <Link to="/" className="font-medium text-xs hover:underline"
+            style={{ color: theme.cardtext, opacity: "0.50" }}>
+            Go back to the main page →
           </Link>
         </p>
       </div>
