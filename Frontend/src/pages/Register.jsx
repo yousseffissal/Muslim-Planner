@@ -10,7 +10,7 @@ import { useTheme } from "../context/ThemeContext";
 export default function Register() {
   const { register } = useAuth();
   const navigate = useNavigate();
-  const [form, setForm] = useState({ username: "", email: "", password: "" });
+  const [form, setForm] = useState({ username: "", famillyname: "", gender: "male", email: "", password: "" });
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const { theme } = useTheme();
