@@ -4,6 +4,8 @@ import { useAuth } from "../context/AuthContext.jsx";
 import bg from "../assets/background2.jpg"
 import { useTheme } from "../context/ThemeContext";
 import ThemeToggle from "../components/ThemeToggle.jsx"
+import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa6";
+import { MdEmail } from "react-icons/md";
 
 export default function LandingPage() {
   const { isAuthenticated } = useAuth();
@@ -108,9 +110,101 @@ export default function LandingPage() {
         </Link>
       </section>
 
+      {/* Developer Section */}
+      <section className="px-6 py-24 flex justify-center items-center">
+        <div className="flex justify-center items-center rounded-[32px] p-2">
+
+        </div>
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-12 md:gap-20">
+
+          {/* Image */}
+          <div className="flex-shrink-0">
+            <img
+              src="/me2.png"
+              alt="Youssef Fissal"
+              className="w-56 md:h-56 object-cover rounded-2xl shadow-lg"
+            />
+          </div>
+
+          {/* Text Content */}
+          <div className="flex-1 text-center md:text-left space-y-3">
+
+            <span
+              className="text-sm uppercase tracking-widest"
+              style={{ color: theme.cardtext }}
+            >
+              Developer
+            </span>
+
+            <h2
+              className="text-2xl md:text-3xl font-bold"
+              style={{ color: theme.cardtext }}
+            >
+              Built with purpose by:
+            </h2>
+
+            <h2
+              className="text-3xl md:text-5xl font-bold"
+              style={{ color: theme.navbarlogo }}
+            >
+              Youssef Fissal
+            </h2>
+
+            <p
+              className="text-base md:text-lg max-w-xl"
+              style={{ color: theme.cardtext }}
+            >
+              Muslim Planner was created to help you stay consistent with your daily
+              worship — from prayers and Quran to small habits that make a big
+              difference over time.
+            </p>
+
+            {/* Socials */}
+            <div
+              className="flex justify-center md:justify-start gap-6 text-2xl pt-2"
+              style={{ color: theme.cardtext }}
+            >
+              <a
+                href="https://github.com/yousseffissal"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:scale-110 transition"
+              >
+                <FaGithub />
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/youssef-fissal"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:scale-110 transition"
+              >
+                <FaLinkedin />
+              </a>
+
+              <a
+                href="https://www.instagram.com/fissal_youssef/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:scale-110 transition"
+              >
+                <FaInstagram />
+              </a>
+
+              <a
+                href="mailto:youssefpaxar1@gmail.com"
+                className="hover:scale-110 transition"
+              >
+                <MdEmail />
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
-      <footer className="text-center py-6 text-sm"
-        style={{ color: theme.cardtext }}>
+      <footer className="text-center py-6 text-sm bg-gray-900 text-white">
         © 2026 Muslim Planner - All rights reserved
       </footer>
     </div>
