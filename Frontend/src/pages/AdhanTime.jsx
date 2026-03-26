@@ -19,7 +19,7 @@ function AdhanTime() {
     fetchAdhan
   } = AdhanHook();
 
-   useEffect(() => {
+  useEffect(() => {
     const timer = setTimeout(() => setError(""), 3000);
     return () => clearTimeout(timer);
   }, [error]);
@@ -32,9 +32,16 @@ function AdhanTime() {
   const { theme, mode } = useTheme();
 
   return (
-    <div className="min-h-[calc(100vh-64px)] overflow-y-auto flex justify-center p-4 bg-no-repeat bg-center bg-cover"
+    <div className="relative min-h-[calc(100vh-64px)] overflow-y-auto flex justify-center p-4 bg-no-repeat bg-center bg-cover overflow-hidden"
       style={{ backgroundImage: `url(${background})` }}>
-      <div className="flex items-start justify-center">
+      {/* طبقة مظلمة Overlay */}
+      <div
+        className="absolute top-0 left-0 w-full h-full z-10"
+        style={{
+          background: mode !== "light" ? '#030303ad' : "transparent", // تغطية تدريجية
+        }}
+      />
+      <div className="flex items-start justify-center z-30">
 
         <div className="w-full max-w-xl rounded-2xl p-8 md:shadow-2xl"
           style={{ background: theme.card }}>
@@ -56,7 +63,7 @@ function AdhanTime() {
             onChange={(e) => setCity(e.target.value)}
             placeholder="City name..."
             className="w-full mb-2 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-400 transition"
-            style={{ background: mode === "dark" ? "transparent" : "#eeeeee", color: mode === "dark" ? "#ffffff" : "#000000", border: `1px solid ${theme.AdhanRed}`, }}
+            style={{ background: mode !== "light" ? "transparent" : "#eeeeee", color: mode !== "light" ? "#ffffff" : "#000000", border: `1px solid ${theme.AdhanRed}`, }}
             disabled={loading}
           />
 
@@ -67,8 +74,8 @@ function AdhanTime() {
             onChange={(e) => setDate(e.target.value)}
             className="w-full rounded-xl  px-4 py-3 mb-4 focus:outline-none focus:ring-2 focus:ring-red-400 transition"
             style={{
-              background: mode === "dark" ? "transparent" : "#eeeeee",
-              color: mode === "dark" ? "#ffffff" : "#000000",
+              background: mode !== "light" ? "transparent" : "#eeeeee",
+              color: mode !== "light" ? "#ffffff" : "#000000",
               border: `1px solid ${theme.AdhanRed}`
             }}
             disabled={loading}
@@ -112,14 +119,14 @@ function AdhanTime() {
               <>
                 {error && (
                   <p className="rounded-lg p-3 mb-4 text-center"
-                    style={{ background: mode === "dark" ? "transparent" : "#fef2f2", color: theme.AdhanRed, border: `1px solid ${theme.AdhanRed}` }}>
+                    style={{ background: mode !== "light" ? "transparent" : "#fef2f2", color: theme.AdhanRed, border: `1px solid ${theme.AdhanRed}` }}>
                     {error}
                   </p>
                 )}
 
                 {successMsg && (
                   <p className="rounded-lg p-3 mb-4 text-center"
-                    style={{ background: mode === "dark" ? "transparent" : "#f0fdf4", color: theme.navbarlogo, border: `1px solid ${theme.navbarlogo}` }}>
+                    style={{ background: mode !== "light" ? "transparent" : "#f0fdf4", color: theme.navbarlogo, border: `1px solid ${theme.navbarlogo}` }}>
                     {successMsg}
                   </p>
                 )}
@@ -150,13 +157,13 @@ function PrayerCard({ name, time }) {
   return (
     <div className="transition rounded-xl p-4 shadow-sm border text-center"
       style={{
-        background: mode === "dark" ? "transparent" : "#f9fafb",
+        background: mode !== "light" ? "transparent" : "#f9fafb",
         border: `2px solid ${theme.AdhanRed}`
       }}>
-      <p className="text-sm" 
-      style={{ color: theme.cardtext }}>{name}</p>
+      <p className="text-sm"
+        style={{ color: theme.cardtext }}>{name}</p>
       <p className="text-lg font-bold mt-1"
-       style={{ color: theme.AdhanRed }}>{time}</p>
+        style={{ color: theme.AdhanRed }}>{time}</p>
     </div>
   );
 }
