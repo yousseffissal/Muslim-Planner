@@ -114,7 +114,7 @@ function SurahView({ surahView }) {
               maskSize: 'cover',
               WebkitMaskRepeat: 'no-repeat',
               WebkitMaskSize: 'cover',
-              opacity: isPlaying ? 0.6 : 0, 
+              opacity: isPlaying ? 0.6 : 0,
             }}
           />
 
@@ -123,13 +123,9 @@ function SurahView({ surahView }) {
             className="absolute top-0 left-0 w-full h-full"
             style={{
               zIndex: 1,
-              background: isPlaying ? mode==="dark" ? 'linear-gradient(to left, rgba(0,0,0,0.6), rgba(0,0,0,0))': "transparent" : "transparent", // تغطية تدريجية
+              background: isPlaying ? mode === "dark" ? 'linear-gradient(to left, rgba(0,0,0,0.6), rgba(0,0,0,0))' : "transparent" : "transparent", // تغطية تدريجية
             }}
           />
-
-
-
-
 
           {/* محتوى الصوت */}
           <div className="relative z-10 w-full flex flex-col items-center">
@@ -282,7 +278,6 @@ function SurahView({ surahView }) {
       {/*<p className="text-lg sm:text-xl md:text-3xl lg:text-4xl text-center text-green-700 font-bold my-6" style={{ color: `${theme.navbarlogo}` }}>
         صدق الله العظيم
       </p>*/}
-      
     </div>
 
   );
