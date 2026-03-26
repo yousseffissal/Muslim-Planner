@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem("token", token);
       setToken(token);
       setIsAuthenticated(true);
-      
+
     } catch (err) {
       if (err.response) {
         const error = new Error(err.response.data.message || "Something went wrong");
@@ -52,6 +52,7 @@ export const AuthProvider = ({ children }) => {
     setToken(null);
     setUser(null);
     setIsAuthenticated(false);
+    localStorage.setItem("tutorial_seen", "false");
   };
 
   // --- fetchMe ---
@@ -73,12 +74,12 @@ export const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-  if (token) {
-    fetchMe();
-  } else {
-    setLoading(false);
-  }
-}, [token]); // 🔥 مهم
+    if (token) {
+      fetchMe();
+    } else {
+      setLoading(false);
+    }
+  }, [token]); // 🔥 مهم
 
   return (
     <AuthContext.Provider
