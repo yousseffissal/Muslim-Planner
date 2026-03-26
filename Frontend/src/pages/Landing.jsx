@@ -75,41 +75,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Features */}
-      <section className="grid md:grid-cols-3 gap-8 px-8 py-20">
-        <div className="border rounded-3xl p-8 shadow hover:shadow-lg transition">
-          <h3 className="text-xl font-semibold mb-3"
-            style={{ color: theme.navbarlogo }}>Task Management</h3>
-          <p style={{ color: theme.cardtext }}>Easily add, organize, and track your daily tasks.</p>
-        </div>
-
-        <div className="border rounded-3xl p-8 shadow hover:shadow-lg transition">
-          <h3 className="text-xl font-semibold mb-3"
-            style={{ color: theme.navbarlogo }}>Quran Progress</h3>
-          <p style={{ color: theme.cardtext }}>Monitor and record your Quran reading journey.</p>
-        </div>
-
-        <div className="border rounded-3xl p-8 shadow hover:shadow-lg transition">
-          <h3 className="text-xl font-semibold mb-3"
-            style={{ color: theme.navbarlogo }}>Daily Motivation</h3>
-          <p style={{ color: theme.cardtext }}>Stay consistent and motivated in your acts of worship.</p>
-        </div>
-      </section>
-
-      {/* Call to Action */}
-      <section className="text-center py-20"
-        style={{ background: theme.surahlist2 }}>
-        <h2 className="md:text-3xl text-2xl font-bold mb-9"
-          style={{ color: theme.navbarlogo }}>Begin Your Journey Today</h2>
-        <Link
-          to="/register"
-          className="text-white px-10 py-4 rounded-xl font-semibold md:text-lg text-base transition"
-          style={{ background: theme.navbarlogo }}
-        >
-          Create Account
-        </Link>
-      </section>
-
       {/* Developer Section */}
       <section className="px-6 py-24 flex justify-center items-center">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-12 md:gap-20">
@@ -197,6 +162,41 @@ export default function LandingPage() {
             </div>
 
           </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="text-center py-20"
+        style={{ background: theme.surahlist2 }}>
+        <h2 className="md:text-3xl text-2xl font-bold mb-9"
+          style={{ color: theme.navbarlogo }}>Begin Your Journey Today</h2>
+        <Link
+          to="/register"
+          className="text-white px-10 py-4 rounded-xl font-semibold md:text-lg text-base transition"
+          style={{ background: theme.navbarlogo }}
+        >
+          Create Account
+        </Link>
+      </section>
+
+      {/* Features */}
+      <section className="grid md:grid-cols-3 gap-8 px-8 py-20">
+        <div className="border rounded-3xl p-8 shadow hover:shadow-lg transition">
+          <h3 className="text-xl font-semibold mb-3"
+            style={{ color: theme.navbarlogo }}>Task Management</h3>
+          <p style={{ color: theme.cardtext }}>Easily add, organize, and track your daily tasks.</p>
+        </div>
+
+        <div className="border rounded-3xl p-8 shadow hover:shadow-lg transition">
+          <h3 className="text-xl font-semibold mb-3"
+            style={{ color: theme.navbarlogo }}>Quran Progress</h3>
+          <p style={{ color: theme.cardtext }}>Monitor and record your Quran reading journey.</p>
+        </div>
+
+        <div className="border rounded-3xl p-8 shadow hover:shadow-lg transition">
+          <h3 className="text-xl font-semibold mb-3"
+            style={{ color: theme.navbarlogo }}>Daily Motivation</h3>
+          <p style={{ color: theme.cardtext }}>Stay consistent and motivated in your acts of worship.</p>
         </div>
       </section>
 
