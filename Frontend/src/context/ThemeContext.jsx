@@ -11,9 +11,19 @@ export const ThemeProvider = ({ children }) => {
   });
 
   // ✅ تغيير الثيم
+
   const toggleTheme = () => {
     setMode(prev => (prev === "light" ? "dark" : "light"));
-  };
+  }
+
+  /*ThemeContext.js
+  const toggleTheme = () => {
+    setMode(prev => {
+      if (prev === "light") return "dark";
+      if (prev === "dark") return "gold";
+      return "light";
+    });
+  };*/
 
   // ✅ حفظ الثيم في localStorage عند التغيير
   useEffect(() => {

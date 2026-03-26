@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
-import { links } from '../tools/Links'
+import { links } from '../tools/Links.js'
 import { scrollToTop } from '../tools/ScrollTop'
 import { BiMenu } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
@@ -164,12 +164,15 @@ function Navbar() {
                             ></div>
 
                             {/* Avatar */}
-                            <img
-                                src={user?.gender ? user?.gender==="male" ? male : female : male}
-                                alt="user"
-                                className="w-28 h-28 rounded-full object-cover -mt-14 z-10"
-                                style={{ background: theme.navbarmobile, border: `4px solid ${theme.navbarlogo}` }}
-                            />
+                            <div className='rounded-full -mt-14 z-10'
+                                style={{ background: theme.navbarmobile, border: `4px solid ${theme.navbaractivelink}` }}>
+                                <img
+                                    src={user?.gender ? user?.gender === "male" ? male : female : male}
+                                    alt="user"
+                                    className="w-28 h-28 rounded-full object-cover"
+                                    style={{ border: `4px solid ${theme.navbarmobile}` }}
+                                />
+                            </div>
 
                             <h3 className="mt-4 text-xl font-bold text-center z-10 relative"
                                 style={{ color: theme.navbarmobilelinks }}>

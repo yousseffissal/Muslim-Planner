@@ -40,17 +40,20 @@ function Sidebar() {
                 <div
                     className="w-full h-20"
                     style={{
-                        background: "linear-gradient(90deg, #FFD700, #FFC300, #FFB700)", 
+                        background: "linear-gradient(90deg, #FFD700, #FFC300, #FFB700)",
                     }}
                 ></div>
 
                 {/* Avatar */}
-                <img
-                    src={user?.gender ? user?.gender==="male" ? male : female : male}
-                    alt="user"
-                    className="w-28 h-28 rounded-full object-cover -mt-14 z-10"
-                    style={{ background: theme.navbarmobile, border: `4px solid ${theme.navbarlogo}` }}
-                />
+                <div className='rounded-full -mt-14 z-10'
+                    style={{ background: theme.navbarmobile, border: `4px solid ${theme.navbaractivelink}` }}>
+                    <img
+                        src={user?.gender ? user?.gender === "male" ? male : female : male}
+                        alt="user"
+                        className="w-28 h-28 rounded-full object-cover"
+                        style={{ border: `4px solid ${theme.navbarmobile}` }}
+                    />
+                </div>
 
                 <h3 className="mt-4 text-2xl font-bold text-gray-800 text-center z-10 relative"
                     style={{ color: theme.navbarmobilelinks }}>
