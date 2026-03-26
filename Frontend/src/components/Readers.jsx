@@ -31,10 +31,11 @@ const QuranReaderSelector = () => {
           {/* الصندوق */}
           <div
             className="w-full max-w-2xl md:max-w-4xl rounded-2xl shadow-2xl overflow-hidden animate-fadeIn"
-            style={{ background: theme.card }}
+            style={{ background: theme.popups }}
           >
             {/* رأس الـ Modal */}
-            <div className="flex justify-start items-center px-4 md:px-6 py-3 border-b">
+            <div className="w-full flex justify-enditems-center px-4 md:px-6 py-3 border-b"
+            style={{ background: theme.card }}>
               <button
                 onClick={() => setIsOpen(false)}
                 className="text-gray-500 hover:text-red-500 text-xl"
