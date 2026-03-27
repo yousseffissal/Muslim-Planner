@@ -77,7 +77,7 @@ function QuranPage() {
       <div
         className="absolute top-0 left-0 w-full h-full z-10"
         style={{
-          background: !selectedSurah ? mode !== "light" ? '#030303ad' : "transparent" : "transparent", // تغطية تدريجية
+          background: !selectedSurah ? mode !== "light" ? '#00000060' : "transparent" : "transparent", // تغطية تدريجية
         }}
       />
 

@@ -38,7 +38,7 @@ function AdhanTime() {
       <div
         className="absolute top-0 left-0 w-full h-full z-10"
         style={{
-          background: mode !== "light" ? '#030303ad' : "transparent", // تغطية تدريجية
+          background: mode !== "light" ? '#00000060' : "transparent", // تغطية تدريجية
         }}
       />
       <div className="flex items-start justify-center z-30">
