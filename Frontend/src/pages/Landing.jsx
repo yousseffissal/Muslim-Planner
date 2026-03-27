@@ -48,7 +48,7 @@ export default function LandingPage() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative flex justify-center items-center "
+      <section className="relative flex justify-center items-center"
         style={{
           background: `url(${bg})`,
           backgroundSize: "cover",
@@ -66,11 +66,11 @@ export default function LandingPage() {
             Track your daily Muslim tasks like prayers, Quran reading, dhikr, and good habits, all in one place.
           </p>
           <Link
-            to="/register"
+            to="/login"
             className="text-white px-8 py-3 md:text-lg text-base rounded-xl font-semibold transition"
             style={{ background: theme.navbarlogo }}
           >
-            Start Now
+            Sign In
           </Link>
         </div>
       </section>
@@ -166,17 +166,28 @@ export default function LandingPage() {
       </section>
 
       {/* Call to Action */}
-      <section className="text-center py-20"
-        style={{ background: theme.surahlist2 }}>
-        <h2 className="md:text-3xl text-2xl font-bold mb-9"
-          style={{ color: theme.navbarlogo }}>Begin Your Journey Today</h2>
-        <Link
-          to="/register"
-          className="text-white px-10 py-4 rounded-xl font-semibold md:text-lg text-base transition"
-          style={{ background: theme.navbarlogo }}
-        >
-          Create Account
-        </Link>
+      <section className="relative flex justify-center items-center py-20"
+        style={{
+          background: `url("/bg3.jpg")`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+        }}>
+        <div
+          className="absolute top-0 left-0 w-full h-full z-0 bg-black/55"
+        />
+        <div className="flex flex-col justify-center items-center z-20">
+          <h2 className="md:text-3xl text-2xl font-bold mb-9 text-green-400">
+            Begin Your Journey Today
+          </h2>
+          <Link
+            to="/register"
+            className="text-white px-10 py-4 rounded-xl font-semibold md:text-lg text-base transition"
+            style={{ background: theme.navbarlogo }}
+          >
+            Create Account
+          </Link>
+        </div>
       </section>
 
       {/* Features */}
