@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 
 const API_URL = import.meta.env.VITE_API_URL
 
@@ -10,6 +11,7 @@ export const AdhanHook = () => {
     const [loading, setLoading] = useState(false);
     const [successMsg, setSuccessMsg] = useState("");
     const [date, setDate] = useState("");
+    const { t } = useTranslation('adhan');
 
     useEffect(() => {
         const today = new Date().toISOString().split("T")[0];
@@ -25,7 +27,7 @@ export const AdhanHook = () => {
             setResult(null)
 
             if (!city.trim()) {
-                setError('Please enter a city name')
+                setError(t("adhan.errors.no_city"));
                 setLoading(false);
                 return;
             }
@@ -34,11 +36,11 @@ export const AdhanHook = () => {
                 `${API_URL}/AdhanTime/AdhanInMyCity/${city}/${formattedDate}`
             )
             setResult(response.data)
-            setSuccessMsg(`Prayer times retrieved successfully for : ${city} in : ${formattedDate}`);
+            setSuccessMsg(t("adhan.messages.success", { city, date: formattedDate }));
 
         } catch (err) {
             setError(
-                err.response?.data?.error || 'Error while fetching data'
+                err.response?.data?.error || t("adhan.errors.default")
             )
         } finally {
             setLoading(false);

@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 
 const API_URL = import.meta.env.VITE_API_URL
 
 export const QuranHook = () => {
+    const { t } = useTranslation('adhan');
     const [result, setResult] = useState(null)
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false);
@@ -21,7 +23,7 @@ export const QuranHook = () => {
 
         } catch (err) {
             setError(
-                err.response?.data?.error || 'Error while fetching data'
+                err.response?.data?.error || t("adhan.errors.default")
             )
         } finally {
             setLoading(false);

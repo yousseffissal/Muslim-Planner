@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import successIcon from "../assets/success.png";
 import { useTheme } from "../context/ThemeContext";
+import { useTranslation } from "react-i18next";
 
 export default function Login() {
   const { login } = useAuth();
@@ -13,6 +14,7 @@ export default function Login() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const { theme } = useTheme();
+  const { t, i18n } = useTranslation("auth");
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -27,12 +29,12 @@ export default function Login() {
       await login(form);
       navigate("/app/dashboard");
       await Swal.fire({
-        title: "Welcome Back",
+        title: t("auth.login.welcomeBack"),
         imageUrl: successIcon,
         imageWidth: 80,
         imageHeight: 80,
-        imageAlt: "Custom icon",
-        confirmButtonText: "OK",
+        imageAlt: t("auth.login.imageAlt"),
+        confirmButtonText: t("auth.login.ok"),
         customClass: {
           popup: "swal-popup-green",
           title: "swal-title-green",
@@ -46,7 +48,7 @@ export default function Login() {
       Swal.fire({
         text: err.message,
         icon: "error",
-        confirmButtonText: "OK",
+        confirmButtonText: t("auth.login.ok"),
         customClass: {
           popup: "swal-popup-red",
           title: "swal-title-red",
@@ -59,60 +61,74 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-2"
-      style={{ background: theme.quranpage }}>
-      <div className="shadow-2xl rounded-2xl p-10 w-full max-w-md animate-fadeIn"
-        style={{ background: theme.card }}>
+    <div
+      dir={i18n.language === "ar" ? "rtl" : "ltr"}
+      className="min-h-screen flex items-center justify-center px-2"
+      style={{ background: theme.quranpage }}
+    >
+      <div
+        className="shadow-2xl rounded-2xl p-10 w-full max-w-md animate-fadeIn"
+        style={{ background: theme.card }}
+      >
+        
         <h1 className="text-3xl font-bold text-center mb-6"
-          style={{ color: theme.navbarlogo }}>Login</h1>
+          style={{ color: theme.navbarlogo }}>
+          {t("auth.login.title")}
+        </h1>
 
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         {success && <p className="text-green-600 text-center mb-4">{success}</p>}
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-5"
           style={{ color: theme.cardtext }}>
+          
           <input
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder={t("auth.login.email")}
             value={form.email}
             onChange={handleChange}
             required
             className="rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
             style={{ background: theme.card, border: `1px solid ${theme.navbarlogo}` }}
           />
+
           <input
             type="password"
             name="password"
-            placeholder="Password"
+            placeholder={t("auth.login.password")}
             value={form.password}
             onChange={handleChange}
             required
             className="rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
             style={{ background: theme.card, border: `1px solid ${theme.navbarlogo}` }}
           />
+
           <button
             type="submit"
             className="text-white font-semibold py-3 rounded-lg transition-colors shadow-md"
             style={{ background: theme.navbarlogo }}
           >
-            Login
+            {t("auth.login.button")}
           </button>
         </form>
 
         <p className="mt-6 text-center"
           style={{ color: theme.cardtext }}>
+          
           <div>
-            Don't have an account?{" "}
+            {t("auth.login.noAccount")}{" "}
             <Link to="/register" className="font-medium hover:underline"
               style={{ color: theme.navbarlogo }}>
-              Register here
+              {t("auth.login.registerHere")}
             </Link>
           </div>
+
           <Link to="/" className="font-medium text-xs hover:underline"
             style={{ color: theme.cardtext, opacity: "0.50"}}>
-            Go back to the main page →
+            {t("auth.login.backHome")}
           </Link>
+
         </p>
       </div>
     </div>

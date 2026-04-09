@@ -1,11 +1,15 @@
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { useTheme } from "../context/ThemeContext";
+import { useTranslation } from "react-i18next";
 
 function OwnerPage() {
     const { theme } = useTheme();
+    const { t, i18n } = useTranslation("common"); // استخدم ملف common.json
+
     return (
-        <div className="min-h-[calc(100vh-64px)] flex items-stretch justify-center p-6"
+        <div className="min-h-[calc(100vh-64px)] flex items-start justify-center p-6"
+            dir={i18n.language === "ar" ? "rtl" : "ltr"}
             style={{ background: theme.quranpage }}>
             <div className="max-w-xl shadow-2xl rounded-3xl p-8 text-center space-y-6"
                 style={{ background: theme.card }}>
@@ -13,16 +17,16 @@ function OwnerPage() {
                 <img
                     className="w-40 h-40 md:w-56 md:h-56 object-cover rounded-full mx-auto shadow-md"
                     src="/me2.png"
-                    alt="Youssef Fissal"
+                    alt={t("owner.name")}
                 />
 
                 <div className="space-y-2">
                     <h1 className="text-2xl md:text-3xl font-bold"
                         style={{ color: theme.cardtext }}>
-                        Youssef Fissal
+                        {t("owner.name")}
                     </h1>
                     <p style={{ color: theme.cardtext }}>
-                        This project was developed and maintained by Youssef Fissal.
+                        {t("owner.description")}
                     </p>
                 </div>
 
@@ -30,7 +34,7 @@ function OwnerPage() {
                 <div className="pt-2">
                     <h2 className="text-lg font-semibold mb-4"
                         style={{ color: theme.cardtext }}>
-                        Follow/Contact me
+                        {t("owner.follow")}
                     </h2>
 
                     <div className="flex justify-center gap-5"
@@ -58,7 +62,7 @@ function OwnerPage() {
                             href="https://www.instagram.com/fissal_youssef/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className=" hover:text-red-600 transition text-2xl"
+                            className="hover:text-red-600 transition text-2xl"
                         >
                             <FaInstagram />
                         </a>
@@ -67,7 +71,7 @@ function OwnerPage() {
                             href="mailto:youssefpaxar1@gmail.com?subject=Contact&body=Hello Youssef,"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className=" hover:text-green-500 transition text-2xl"
+                            className="hover:text-green-500 transition text-2xl"
                         >
                             <MdEmail />
                         </a>
@@ -77,7 +81,7 @@ function OwnerPage() {
 
                 <p className="text-sm pt-4"
                     style={{ color: theme.cardtext }}>
-                    © {new Date().getFullYear()} Youssef Fissal. All rights reserved.
+                    © {new Date().getFullYear()} {t("owner.name")}. {t("owner.rights")}
                 </p>
 
             </div>

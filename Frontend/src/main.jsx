@@ -6,6 +6,7 @@ import { AuthProvider } from "./context/AuthContext.jsx";
 import { ThemeProvider } from "./context/ThemeContext.jsx";
 import { ReaderProvider } from "./context/ReaderContext";
 import './index.css';
+import "./I18n/config";
 
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>

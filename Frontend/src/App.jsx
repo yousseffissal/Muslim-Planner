@@ -8,7 +8,7 @@ import Footer from './components/Footer'
 function App() {
 
   const [isSidebarVisible, setIsSidebarVisible] = useState(false)
-   const { theme } = useTheme();
+  const { theme } = useTheme();
 
   useEffect(() => {
     const handleResize = () => setIsSidebarVisible(window.innerWidth >= 925)
@@ -18,12 +18,12 @@ function App() {
   }, [])
 
   useEffect(() => {
-  const root = document.documentElement;
+    const root = document.documentElement;
 
-  root.style.setProperty("--scroll-track", theme.scrollTrack);
-  root.style.setProperty("--scroll-thumb", theme.scrollThumb);
-  root.style.setProperty("--scroll-thumb-hover", theme.scrollThumbHover);
-}, [theme]);
+    root.style.setProperty("--scroll-track", theme.scrollTrack);
+    root.style.setProperty("--scroll-thumb", theme.scrollThumb);
+    root.style.setProperty("--scroll-thumb-hover", theme.scrollThumbHover);
+  }, [theme]);
 
   return (
     <div className="min-h-screen bg-gray-100">

@@ -5,7 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import successIcon from "../assets/success.png";
 import { useTheme } from "../context/ThemeContext";
-
+import { useTranslation } from "react-i18next";
+import i18n from "i18next";
 
 export default function Register() {
   const { register } = useAuth();
@@ -14,6 +15,7 @@ export default function Register() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const { theme } = useTheme();
+  const { t } = useTranslation("auth");
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -26,16 +28,16 @@ export default function Register() {
 
     try {
       await register(form);
-      setSuccess("Account created successfully!");
+      setSuccess(t("auth.register.success"));
       navigate("/app/dashboard");
       await Swal.fire({
-        title: "Account created",
-        text: "Your Account was created successfully!",
+        title: t("auth.register.accountCreated"),
+        text: t("auth.register.accountCreatedText"),
         imageUrl: successIcon,
         imageWidth: 80,
         imageHeight: 80,
-        imageAlt: "Custom icon",
-        confirmButtonText: "OK",
+        imageAlt: t("auth.register.imageAlt"),
+        confirmButtonText: t("auth.register.ok"),
         customClass: {
           popup: "swal-popup-green",
           title: "swal-title-green",
@@ -49,7 +51,7 @@ export default function Register() {
       Swal.fire({
         text: err.message,
         icon: "error",
-        confirmButtonText: "OK",
+        confirmButtonText: t("auth.register.ok"),
         customClass: {
           popup: "swal-popup-red",
           title: "swal-title-red",
@@ -62,38 +64,45 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-2"
-      style={{ background: theme.quranpage }}>
-      <div className="shadow-2xl rounded-2xl p-10 w-full max-w-md animate-fadeIn"
-        style={{ background: theme.card }}>
-        <h1 className="text-3xl font-bold text-center mb-6"
-          style={{ color: theme.navbarlogo }}>Register</h1>
+    <div
+      dir={i18n.language === "ar" ? "rtl" : "ltr"} // اتجاه الصفحة خاص بهذا Component فقط
+      className="min-h-screen flex items-center justify-center px-2"
+      style={{ background: theme.quranpage }}
+    >
+      <div
+        className="shadow-2xl rounded-2xl p-10 w-full max-w-md animate-fadeIn"
+        style={{ background: theme.card }}
+      >
+        <h1 className="text-3xl font-bold text-center mb-6" style={{ color: theme.navbarlogo }}>
+          {t("auth.register.title")}
+        </h1>
 
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         {success && <p className="text-green-600 text-center mb-4">{success}</p>}
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-5"
-          style={{ color: theme.cardtext }}>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5" style={{ color: theme.cardtext }}>
           <input
             type="text"
             name="username"
-            placeholder="Username"
+            placeholder={t("auth.register.username")}
             value={form.username}
             onChange={handleChange}
             required
             className="rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
             style={{ background: theme.card, border: `1px solid ${theme.navbarlogo}` }}
           />
+
           <input
             type="text"
             name="famillyname"
-            placeholder="Familly name"
+            placeholder={t("auth.register.famillyname")}
             value={form.famillyname}
             onChange={handleChange}
             required
             className="rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
             style={{ background: theme.card, border: `1px solid ${theme.navbarlogo}` }}
           />
+
           <select
             name="gender"
             value={form.gender}
@@ -102,51 +111,52 @@ export default function Register() {
             className="rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
             style={{ background: theme.card, border: `1px solid ${theme.navbarlogo}` }}
           >
-            <option value="" disabled>Select gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
+            <option value="" disabled>{t("auth.register.gender")}</option>
+            <option value="male">{t("auth.register.male")}</option>
+            <option value="female">{t("auth.register.female")}</option>
           </select>
+
           <input
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder={t("auth.register.email")}
             value={form.email}
             onChange={handleChange}
             required
             className="rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
             style={{ background: theme.card, border: `1px solid ${theme.navbarlogo}` }}
           />
+
           <input
             type="password"
             name="password"
-            placeholder="Password"
+            placeholder={t("auth.register.password")}
             value={form.password}
             onChange={handleChange}
             required
             className="rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
             style={{ background: theme.card, border: `1px solid ${theme.navbarlogo}` }}
           />
+
           <button
             type="submit"
             className="text-white font-semibold py-3 rounded-lg transition-colors shadow-md"
             style={{ background: theme.navbarlogo }}
           >
-            Create Account
+            {t("auth.register.button")}
           </button>
         </form>
 
-        <p className="mt-6 text-center"
-          style={{ color: theme.cardtext }}>
+        <p className="mt-6 text-center" style={{ color: theme.cardtext }}>
           <div>
-            Already have an account?{" "}
-            <Link to="/login" className="font-medium hover:underline"
-              style={{ color: theme.navbarlogo }}>
-              Login here
+            {t("auth.register.haveAccount")}{" "}
+            <Link to="/login" className="font-medium hover:underline" style={{ color: theme.navbarlogo }}>
+              {t("auth.register.loginHere")}
             </Link>
           </div>
-          <Link to="/" className="font-medium text-xs hover:underline"
-            style={{ color: theme.cardtext, opacity: "0.50" }}>
-            Go back to the main page →
+
+          <Link to="/" className="font-medium text-xs hover:underline" style={{ color: theme.cardtext, opacity: "0.50" }}>
+            {t("auth.register.backHome")}
           </Link>
         </p>
       </div>

@@ -62,6 +62,7 @@ const QuranReaderSelector = () => {
                         color: theme.cardtext,
                       }}
                     >
+                      
                       {/* صورة القارئ */}
                       <img
                         src={

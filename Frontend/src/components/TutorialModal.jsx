@@ -1,40 +1,45 @@
 import { useState } from "react";
 import { useTheme } from "../context/ThemeContext";
-
-const tutorialData = [
-    {
-        title: "📖 Continue Your Reading",
-        text: "Resume your reading from where you left off, or choose any Surah from the Surah list.",
-        image: "/T1.png",
-    },
-    {
-        title: "💾 Save Your Progress",
-        text: "Click on an Ayah number to save your progress and return to it later anytime.",
-        image: "/T2.png",
-    },
-    {
-        title: "🎧 Play & Control Audio",
-        text: "Click on any Ayah to start its audio. Use the control panel to play, pause, and navigate between Ayahs.",
-        image: "/T3.png",
-    },
-    {
-        title: "🎙️ Choose Your Reciter",
-        text: "Open the reciters list and select your favorite reciter from a wide collection.",
-        image: "/T4.png",
-    },
-];
+import { useTranslation } from "react-i18next";
 
 export default function TutorialModal({ onClose }) {
     const [step, setStep] = useState(0);
-    const isLast = step === tutorialData.length - 1;
     const { theme } = useTheme();
+    const { t, i18n } = useTranslation("tutorial");
+
+    const tutorialData = [
+        {
+            title: t("tutorial1.title"),
+            text: t("tutorial1.text"),
+            image: "/T1.png",
+        },
+        {
+            title: t("tutorial2.title"),
+            text: t("tutorial2.text"),
+            image: "/T2.png",
+        },
+        {
+            title: t("tutorial3.title"),
+            text: t("tutorial3.text"),
+            image: "/T3.png",
+        },
+        {
+            title: t("tutorial4.title"),
+            text: t("tutorial4.text"),
+            image: "/T4.png",
+        },
+    ];
+
+    const isLast = step === tutorialData.length - 1;
 
     return (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/55 p-4">
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/55 p-4"
+        >
 
             {/* Modal */}
             <div
-                className="relative w-full max-w-4xl rounded-3xl shadow-2xl p-6 md:p-10 transition-all duration-300 animate-fadeIn"
+                className={`relative w-full max-w-4xl rounded-3xl shadow-2xl p-6 md:p-10 transition-all duration-300 animate-fadeIn`}
+                dir={i18n.language === "ar" ? "rtl" : "ltr"}
                 style={{
                     background: theme.popups,
                     color: theme.cardtext,
@@ -50,7 +55,7 @@ export default function TutorialModal({ onClose }) {
                 </button>
 
                 {/* Content */}
-                <div className="flex flex-col md:flex-row items-center gap-8">
+                <div className={`flex flex-col md:flex-row items-center gap-8`}>
 
                     {/* Image */}
                     <div className="w-full md:w-1/2 flex justify-center">
@@ -64,7 +69,7 @@ export default function TutorialModal({ onClose }) {
                     </div>
 
                     {/* Text */}
-                    <div className="w-full md:w-1/2 text-center md:text-left ">
+                    <div className={`w-full md:w-1/2 text-center md:text-${i18n.language === "ar" ? "right" : "left"}`}>
                         <h2
                             className="text-2xl md:text-3xl font-bold mb-4"
                             style={{ color: theme.navbarlogo }}
@@ -83,7 +88,8 @@ export default function TutorialModal({ onClose }) {
                 </div>
 
                 {/* Indicators */}
-                <div className="flex justify-center gap-2 mt-6">
+                <div className="flex justify-center gap-2 mt-6"
+                dir={i18n.language === "ar" ? "rtl" : "ltr"}>
                     {tutorialData.map((_, i) => (
                         <span
                             key={i}
@@ -99,7 +105,8 @@ export default function TutorialModal({ onClose }) {
                 </div>
 
                 {/* Buttons */}
-                <div className="flex justify-between items-center mt-6">
+                <div className="flex justify-between items-center mt-6"
+                >
 
                     {/* Previous */}
                     <button
@@ -112,7 +119,7 @@ export default function TutorialModal({ onClose }) {
                             cursor: step === 0 ? "not-allowed" : "pointer",
                         }}
                     >
-                        ← Previous
+                        {t("buttons.previous")}
                     </button>
 
                     {/* Next / Finish */}
@@ -125,7 +132,7 @@ export default function TutorialModal({ onClose }) {
                                 color: "#fff",
                             }}
                         >
-                            Next →
+                            {t("buttons.next")}
                         </button>
                     ) : (
                         <button
@@ -136,7 +143,7 @@ export default function TutorialModal({ onClose }) {
                                 color: "#fff",
                             }}
                         >
-                            Get Started 🚀
+                            {t("buttons.start")}
                         </button>
                     )}
 

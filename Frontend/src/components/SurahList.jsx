@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { useTheme } from "../context/ThemeContext";
+import { useTranslation } from "react-i18next";
 
 function SurahSelect({ onSelect }) {
   const [surahs, setSurahs] = useState([]);
   const { theme } = useTheme();
+  const { i18n } = useTranslation();
 
   useEffect(() => {
     fetch("https://api.alquran.cloud/v1/surah")
@@ -28,11 +30,11 @@ function SurahSelect({ onSelect }) {
             <div className="flex justify-between items-center">
               <span className="text-lg font-semibold"
                 style={{ color: theme.surahlisttext }}>
-                {surah.number} {". "} {surah.name} {"/"} {surah.englishName}
+                {surah.number} {". "} {i18n.language === "ar" ? surah.name : surah.englishName}
               </span>
 
               <span className="flex justify-center items-center gap-2" style={{ color: theme.surahlisttext }}>
-                <img src={surah.revelationType==="Meccan"? "/mecca.png" : "/madina.png"} alt="Type" className="w-6 h-6"/>
+                <img src={surah.revelationType === "Meccan" ? "/mecca.png" : "/madina.png"} alt="Type" className="w-6 h-6" />
               </span>
             </div>
           </div>

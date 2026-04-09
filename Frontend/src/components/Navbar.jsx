@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
-import { links } from '../tools/Links.js'
+import { useLinks } from '../tools/Links.js'
 import { scrollToTop } from '../tools/ScrollTop'
 import { BiMenu } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
@@ -11,12 +11,17 @@ import Swal from "sweetalert2";
 import successIcon from "../assets/success.png";
 import ThemeToggle from "../components/ThemeToggle.jsx"
 import { useTheme } from "../context/ThemeContext";
+import i18n from "i18next";
+import { useTranslation } from "react-i18next";
+import LanguageDropdown from './LanguageDropdown.jsx';
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
     const visibleIndexes = [0, 1, 2, 7];
     const { user, logout } = useAuth();
     const { theme } = useTheme();
+    const links = useLinks();
+    const { t } = useTranslation('links');
 
     return (
         <nav className="shadow-md  w-full h-16 fixed top-0 z-100"
@@ -39,6 +44,7 @@ function Navbar() {
 
                     {/* Desktop */}
                     <div className="hidden navbar:flex space-x-8 font-medium"
+
                         style={{ color: theme.navbarlinks }}>
                         {links
                             .filter((_, index) => visibleIndexes.includes(index))
@@ -66,16 +72,16 @@ function Navbar() {
                             ))}
                     </div>
 
-                    <div className='hidden navbar:flex gap-4'>
+                    <div className='hidden navbar:flex gap-4 justify-center items-center'>
 
                         <button
                             onClick={async () => {
                                 const result = await Swal.fire({
-                                    text: "Are you sure you want to logout?",
+                                    text: t("links.logoutConfirmText"),
                                     icon: "warning",
                                     showCancelButton: true,
-                                    confirmButtonText: "Logout",
-                                    cancelButtonText: "Cancel",
+                                    confirmButtonText: t("links.logout"),
+                                    cancelButtonText: t("links.cancel"),
                                     customClass: {
                                         popup: "swal-popup-green",
                                         title: "swal-title-green",
@@ -90,10 +96,10 @@ function Navbar() {
                                     logout();
                                     setIsOpen(false);
                                     await Swal.fire({
-                                        title: "Logged Out",
-                                        text: "You have been logged out, see you soon!",
+                                        title: t("links.logoutSuccessTitle"),
+                                        text: t("links.logoutSuccessText"),
                                         icon: successIcon,
-                                        confirmButtonText: "OK",
+                                        confirmButtonText: t("links.ok"),
                                         imageUrl: successIcon,
                                         imageWidth: 80,
                                         imageHeight: 80,
@@ -112,30 +118,33 @@ function Navbar() {
                                 rounded-xl
                                  hover:shadow-lg shadow-md"
                         >
-                            Logout
+                            {t("links.logout")}
                         </button>
-
+                        <LanguageDropdown />
                         <ThemeToggle />
                     </div>
 
 
 
-
-                    {/* Mobile Button */}
-                    <button
-                        className="navbar:hidden text-2xl"
-                        style={{ color: theme.navbarmenu }}
-                        onClick={() => setIsOpen(!isOpen)}
-                    >
-                        {isOpen ? <AiOutlineClose /> : <BiMenu />}
-                    </button>
+                    <div className='flex justify-center items-center gap-2 navbar:hidden'>
+                        <LanguageDropdown />
+                        {/* Mobile Button */}
+                        <button
+                            className="text-2xl"
+                            style={{ color: theme.navbarmenu }}
+                            onClick={() => setIsOpen(!isOpen)}
+                        >
+                            {isOpen ? <AiOutlineClose /> : <BiMenu />}
+                        </button>
+                    </div>
 
                 </div>
             </div>
 
             {/* 🔥 Mobile Menu */}
             {isOpen && (
-                <div className="fixed inset-0 z-40 navbar:hidden">
+                <div className="fixed inset-0 z-40 navbar:hidden"
+                    dir={i18n.language === "ar" ? "rtl" : "ltr"}>
 
                     {/* 🔥 OVERLAY */}
                     <div
@@ -222,11 +231,11 @@ function Navbar() {
                             <button
                                 onClick={async () => {
                                     const result = await Swal.fire({
-                                        text: "Are you sure you want to logout?",
+                                        text: t("links.logoutConfirmText"),
                                         icon: "warning",
                                         showCancelButton: true,
-                                        confirmButtonText: "Logout",
-                                        cancelButtonText: "Cancel",
+                                        confirmButtonText: t("links.logout"),
+                                        cancelButtonText: t("links.cancel"),
                                         customClass: {
                                             popup: "swal-popup-green",
                                             title: "swal-title-green",
@@ -241,10 +250,10 @@ function Navbar() {
                                         logout();
                                         setIsOpen(false);
                                         await Swal.fire({
-                                            title: "Logged Out",
-                                            text: "You have been logged out, see you soon!",
+                                            title: t("links.logoutSuccessTitle"),
+                                            text: t("links.logoutSuccessText"),
                                             icon: successIcon,
-                                            confirmButtonText: "OK",
+                                            confirmButtonText: t("links.ok"),
                                             imageUrl: successIcon,
                                             imageWidth: 80,
                                             imageHeight: 80,
@@ -263,7 +272,7 @@ function Navbar() {
                                     rounded-xl transition-all duration-200 
                                     shadow-md hover:shadow-lg"
                             >
-                                Logout
+                                {t("links.logout")}
                             </button>
                         </div>
 

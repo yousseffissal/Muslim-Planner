@@ -1,17 +1,21 @@
 import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
-import { links } from '../tools/Links'
+import { useLinks } from '../tools/Links'
 import { scrollToTop } from '../tools/ScrollTop'
 import { useAuth } from '../context/AuthContext.jsx'
 import male from '../assets/male.png'
 import female from '../assets/female.png'
 import { useTheme } from "../context/ThemeContext";
+import i18n from "i18next";
+import { useTranslation } from "react-i18next";;
 
 
 function Sidebar() {
     const { user } = useAuth();
     const [isVisible, setIsVisible] = useState(false)
     const { theme } = useTheme();
+    const links = useLinks(); // هنا نستخدم الـ hook 
+    const { t } = useTranslation('links')
 
     useEffect(() => {
         const handleResize = () => {
@@ -67,11 +71,12 @@ function Sidebar() {
             </div>
 
             {/* 🔥 NAVBAR SCROLLABLE */}
-            <div className="flex-1 overflow-y-auto px-4 py-4">
+            <div className="flex-1 overflow-y-auto px-4 py-4"
+            dir={i18n.language === "ar" ? "rtl" : "ltr"}>
 
                 <h2 className="text-lg font-semibold mb-4"
                     style={{ color: theme.navbarlogo }}>
-                    Navigation
+                    {t("links.navigation")}
                 </h2>
 
                 <ul className="space-y-3 text-gray-700 font-medium">

@@ -2,25 +2,29 @@ import { useRouteError, isRouteErrorResponse } from "react-router-dom";
 import errorImage from "../assets/error404.jpg";
 import { useAuth } from "../context/AuthContext";
 import { useTheme } from "../context/ThemeContext";
+import { useTranslation } from "react-i18next";
 
 function ErrorPage() {
     const error = useRouteError();
     const { isAuthenticated } = useAuth();
     const { theme } = useTheme();
+    const { t, i18n } = useTranslation("error");
 
-    let title = "Something went wrong";
-    let message = "An unexpected error occurred.";
+    let title = t("error.wrong");
+    let message = t("error.unexpectedError");
 
     if (isRouteErrorResponse(error)) {
         title = `${error.status} ${error.statusText}`;
 
         if (error.status === 404) {
-            message = "The page you are trying to access does not exist. It may have been moved or deleted, or the link is incorrect. Please return to the homepage.";
+            message = t("error.notFoundMessage");
+            title = t("error.wrong");
         }
     }
 
     return (
         <div className="relative flex flex-col items-center justify-center min-h-screen"
+            dir={i18n.language === "ar" ? "rtl" : "ltr"}
             style={{ background: theme.quranpage }}>
             {/* Wrapper */}
             <div className="flex flex-col text-center px-6 w-fit h-fit justify-center items-center"
@@ -56,7 +60,7 @@ function ErrorPage() {
                         border: `1px solid ${theme.navbarlogo}`
                     }}
                 >
-                    Back to the Homepage
+                    {t("error.backHome")}
                 </a>
 
             </div>
