@@ -1,0 +1,23 @@
+{
+    "tutorial1": {
+        "title": "📖 Continue Reading",
+        "text": "You can resume reading from where you left off or choose any Surah from the Surahs list."
+    },
+    "tutorial2": {
+        "title": "💾 Save Your Progress",
+        "text": "Click on any Ayah number to save your progress and return to it later anytime."
+    },
+    "tutorial3": {
+        "title": "🎧 Play & Control Audio",
+        "text": "Click on any Ayah to start audio playback. Use the controls to play, pause, and navigate between Ayahs."
+    },
+    "tutorial4": {
+        "title": "🎙️ Choose Your Reciter",
+        "text": "Open the reciters list and select your preferred reciter from a wide collection."
+    },
+    "buttons": {
+        "previous": "← Previous",
+        "next": "Next →",
+        "start": "Get Started 🚀"
+    }
+}

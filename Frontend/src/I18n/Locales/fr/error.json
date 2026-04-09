@@ -1,0 +1,8 @@
+{
+  "error": {
+    "wrong": "Une erreur s'est produite",
+    "unexpectedError": "Une erreur inattendue est survenue.",
+    "notFoundMessage": "La page que vous essayez d'accéder n'existe pas. Elle a peut-être été déplacée ou supprimée, ou le lien est incorrect. Veuillez retourner à la page d'accueil.",
+    "backHome": "Retour à la page d'accueil"
+  }
+}

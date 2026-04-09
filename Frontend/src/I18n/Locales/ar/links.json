@@ -1,0 +1,19 @@
+{
+    "links": {
+        "dashboard": "لوحة التحكم",
+        "prayerTimes": "مواقيت الصلاة",
+        "quran": "القرآن",
+        "mySchedule": "جدولي",
+        "adkar": "أذكار",
+        "tasbih": "تسبيح",
+        "calendar": "التقويم",
+        "about": "من نحن",
+        "logout": "الخروج",
+        "navigation": "شريط التنقّل",
+        "logoutConfirmText": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+        "logoutSuccessTitle": "تم تسجيل الخروج",
+        "logoutSuccessText": "!لقد تم تسجيل الخروج، إلى اللقاء قريبًا",
+        "cancel": "إلغاء",
+        "ok": "حسنًا"
+    }
+}

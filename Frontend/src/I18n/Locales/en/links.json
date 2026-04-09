@@ -1,0 +1,19 @@
+{
+    "links": {
+        "dashboard": "Dashboard",
+        "prayerTimes": "Prayer Times",
+        "quran": "Quran",
+        "mySchedule": "My Schedule",
+        "adkar": "Adkar",
+        "tasbih": "Tasbih",
+        "calendar": "Calendar",
+        "about": "About us",
+        "logout": "Logout",
+        "navigation": "Navigation",
+        "logoutConfirmText": "Are you sure you want to logout?",
+        "logoutSuccessTitle": "Logged Out",
+        "logoutSuccessText": "You have been logged out, see you soon!",
+        "cancel": "Cancel",
+        "ok": "OK"
+    }
+}

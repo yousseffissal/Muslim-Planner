@@ -1,0 +1,8 @@
+{
+  "error": {
+    "wrong": "Something went wrong",
+    "unexpectedError": "An unexpected error occurred.",
+    "notFoundMessage": "The page you are trying to access does not exist. It may have been moved or deleted, or the link is incorrect. Please return to the homepage.",
+    "backHome": "Back to the Homepage"
+  }
+}

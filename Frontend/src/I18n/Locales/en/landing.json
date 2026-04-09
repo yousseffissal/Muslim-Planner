@@ -1,0 +1,28 @@
+{
+  "hero": {
+    "title": "Organize Your Daily Worship Effortlessly",
+    "subtitle": "Track your daily Muslim tasks like prayers, Quran reading, dhikr, and good habits, all in one place.",
+    "cta": "Sign In"
+  },
+  "developer": {
+    "role": "Developer",
+    "builtBy": "Built with purpose by:",
+    "name": "Youssef Fissal",
+    "description": "Muslim Planner was created to help you stay consistent with your daily worship, from prayers and Quran to small habits that make a big difference over time."
+  },
+  "cta": {
+    "title": "Begin Your Journey Today",
+    "button": "Create Account"
+  },
+  "features": {
+    "taskTitle": "Task Management",
+    "taskDesc": "Easily add, organize, and track your daily tasks.",
+    "quranTitle": "Quran Progress",
+    "quranDesc": "Monitor and record your Quran reading journey.",
+    "motivationTitle": "Daily Motivation",
+    "motivationDesc": "Stay consistent and motivated in your acts of worship."
+  },
+  "footer": {
+    "rights": "All rights reserved"
+  }
+}

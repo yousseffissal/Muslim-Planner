@@ -1,0 +1,19 @@
+{
+    "links": {
+        "dashboard": "Tableau de bord",
+        "prayerTimes": "Horaires de prière",
+        "quran": "Coran",
+        "mySchedule": "Mon emploi",
+        "adkar": "Adkar",
+        "tasbih": "Tasbih",
+        "calendar": "Calendrier",
+        "about": "À propos",
+        "logout": "Déconnecter",
+        "navigation": "Navigation",
+        "logoutConfirmText": "Êtes-vous sûr de vouloir vous déconnecter ?",
+        "logoutSuccessTitle": "Déconnecté",
+        "logoutSuccessText": "Vous avez été déconnecté, à bientôt !",
+        "cancel": "Annuler",
+        "ok": "OK"
+    }
+}

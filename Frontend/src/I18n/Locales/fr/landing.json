@@ -1,0 +1,28 @@
+{
+  "hero": {
+    "title": "Organisez votre pratique quotidienne facilement",
+    "subtitle": "Suivez vos activités quotidiennes comme les prières, la lecture du Coran, le dhikr et les bonnes habitudes, le tout en un seul endroit.",
+    "cta": "Se connecter"
+  },
+  "developer": {
+    "role": "Développeur",
+    "builtBy": "Développé avec passion par :",
+    "name": "Youssef Fissal",
+    "description": "Muslim Planner a été créé pour vous aider à rester constant dans vos prières quotidiennes, des prières à la lecture du Coran, en passant par de petites habitudes qui font une grande différence avec le temps."
+  },
+  "cta": {
+    "title": "Commencez votre parcours dès aujourd'hui",
+    "button": "Créer un compte"
+  },
+  "features": {
+    "taskTitle": "Gestion des tâches",
+    "taskDesc": "Ajoutez, organisez et suivez facilement vos tâches quotidiennes.",
+    "quranTitle": "Progression du Coran",
+    "quranDesc": "Suivez et enregistrez votre parcours de lecture du Coran.",
+    "motivationTitle": "Motivation quotidienne",
+    "motivationDesc": "Restez constant et motivé dans vos actes d'adoration."
+  },
+  "footer": {
+    "rights": "Tous droits réservés"
+  }
+}

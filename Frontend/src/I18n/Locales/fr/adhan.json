@@ -1,0 +1,26 @@
+{
+    "adhan": {
+        "title": "🕌 Horaires de l'Adhan",
+        "subtitle": "Entrez le nom d'une ville pour obtenir les horaires de prière du jour ou de n'importe quel jour",
+        "cityPlaceholder": "Nom de la ville...",
+        "getButton": "Obtenir les horaires d'Adhan",
+        "loading": "Chargement...",
+        "note": "Vous pouvez taper les noms des villes en anglais ou en arabe. <br /> ⚠️ Remarque : si le nom de la ville est incorrect, l'application peut renvoyer des horaires de prière aléatoires ou approximatifs car l'API essaie de trouver la correspondance la plus proche en fonction des lieux disponibles. <br /> ℹ️ Cette application utilise <a href='https://aladhan.com' class='underline' style='color:{{themeColor}};'>l'API AlAdhan.com</a> pour les horaires de prière. <br /> 🛠 Je vais ajouter une solution pour valider correctement les noms de villes à l'avenir.",
+        "error": "Erreur lors de la récupération des horaires d'Adhan",
+        "success": "Horaires d'Adhan récupérés avec succès",
+        "prayers": {
+            "fajr": "Fajr",
+            "dhuhr": "Dhuhr",
+            "asr": "Asr",
+            "maghrib": "Maghrib",
+            "isha": "Isha"
+        },
+        "errors": {
+            "no_city": "Veuillez entrer le nom de la ville",
+            "default": "Erreur lors de la récupération des données"
+        },
+        "messages": {
+            "success": "Heures de prière récupérées avec succès pour : {{city}} le : {{date}}"
+        }
+    }
+}

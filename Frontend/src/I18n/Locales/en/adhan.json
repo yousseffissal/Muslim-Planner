@@ -1,0 +1,26 @@
+{
+    "adhan": {
+        "title": "🕌 Adhan Times",
+        "subtitle": "Enter a city name to get today's or any day prayer times",
+        "cityPlaceholder": "City name...",
+        "getButton": "Get Adhan Time",
+        "loading": "Loading...",
+        "note": "You can type city names in English or Arabic. <br /> ⚠️ Note: If the city name is incorrect, the app may return random or approximate prayer times because the API tries to find the closest match based on available locations. <br /> ℹ️ This app uses <a href='https://aladhan.com' class='underline' style='color:{{themeColor}};'>AlAdhan.com API</a> for prayer times. <br /> 🛠 I will add a solution to validate city names properly in the future.",
+        "error": "Error fetching Adhan times",
+        "success": "Adhan times fetched successfully",
+        "prayers": {
+            "fajr": "Fajr",
+            "dhuhr": "Dhuhr",
+            "asr": "Asr",
+            "maghrib": "Maghrib",
+            "isha": "Isha"
+        },
+        "errors": {
+            "no_city": "Please enter a city name",
+            "default": "Error while fetching data"
+        },
+        "messages": {
+            "success": "Prayer times retrieved successfully for : {{city}} on : {{date}}"
+        }
+    }
+}

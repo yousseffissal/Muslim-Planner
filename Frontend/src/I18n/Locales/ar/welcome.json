@@ -1,0 +1,11 @@
+{
+  "welcome": {
+    "title": "مرحبًا بك في Muslim Planner",
+    "subtitle": "تطبيقك اليومي الذي يساعدك على تنظيم عبادتك، الأذكار، قراءة القرآن، وإدارة مهامك اليومية بسهولة وراحة.",
+    "buttons": {
+      "startDay": "ابدأ يومك",
+      "exploreFeatures": "استكشاف المزايا"
+    },
+    "imageAlt": "Muslim Planner"
+  }
+}

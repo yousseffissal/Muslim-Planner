@@ -1,0 +1,11 @@
+{
+  "welcome": {
+    "title": "Bienvenue sur Muslim Planner",
+    "subtitle": "Votre application quotidienne qui vous aide à organiser votre adoration, vos rappels (adhkar), la lecture du Coran et gérer vos tâches quotidiennes avec aisance et confort.",
+    "buttons": {
+      "startDay": "Commencez votre journée",
+      "exploreFeatures": "Explorer les fonctionnalités"
+    },
+    "imageAlt": "Muslim Planner"
+  }
+}

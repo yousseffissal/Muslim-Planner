@@ -1,0 +1,23 @@
+{
+    "tutorial1": {
+        "title": "📖 Continuez votre lecture",
+        "text": "Reprenez votre lecture là où vous l'avez arrêtée ou choisissez une sourate dans la liste."
+    },
+    "tutorial2": {
+        "title": "💾 Sauvegardez votre progression",
+        "text": "Cliquez sur le numéro d'un verset pour enregistrer votre progression et y revenir plus tard."
+    },
+    "tutorial3": {
+        "title": "🎧 Lecture et contrôle audio",
+        "text": "Cliquez sur un verset pour lancer l'audio. Utilisez les contrôles pour lire, mettre en pause et naviguer."
+    },
+    "tutorial4": {
+        "title": "🎙️ Choisissez votre récitant",
+        "text": "Ouvrez la liste des récitants et sélectionnez votre préféré parmi une large collection."
+    },
+    "buttons": {
+        "previous": "← Précédent",
+        "next": "Suivant →",
+        "start": "Commencer 🚀"
+    }
+}
