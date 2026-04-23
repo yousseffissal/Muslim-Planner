@@ -42,6 +42,13 @@ import arCommon from "./Locales/ar/common.json";
 import frCommon from "./Locales/fr/common.json";
 
 
+import enTasks from "./Locales/en/tasks.json";
+import arTasks from "./Locales/ar/tasks.json";
+import frTasks from "./Locales/fr/tasks.json";
+
+import enSurah from "./Locales/en/surah.json";
+import arSurah from "./Locales/ar/surah.json";
+import frSurah from "./Locales/fr/surah.json";
 
 i18n
     .use(LanguageDetector)
@@ -59,7 +66,9 @@ i18n
                 footer: enFooter,
                 tutorial: enTutorial,
                 error: enError,
-                common: enCommon
+                common: enCommon,
+                tasks: enTasks,
+                surah: enSurah
             },
             ar: {
                 landing: arLanding,
@@ -70,7 +79,9 @@ i18n
                 footer: arFooter,
                 tutorial: arTutorial,
                 error: arError,
-                common: arCommon
+                common: arCommon,
+                tasks: arTasks,
+                surah: arSurah
             },
             fr: {
                 landing: frLanding,
@@ -81,11 +92,13 @@ i18n
                 footer: frFooter,
                 tutorial: frTutorial,
                 error: frError,
-                common: frCommon
+                common: frCommon,
+                tasks: frTasks,
+                surah: frSurah
             }
         },
 
-        ns: ["landing", "welcome", "auth", "adhan", "links", "footer", "tutorial", "error", "common"],
+        ns: ["landing", "welcome", "auth", "adhan", "links", "footer", "tutorial", "error", "common", "tasks", "surah"],
         defaultNS: "landing",
         interpolation: {
             escapeValue: false,

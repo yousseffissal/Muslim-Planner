@@ -11,6 +11,8 @@ import { getProgress } from "../services/QuranService";
 import { useTheme } from "../context/ThemeContext";
 import { useReader } from "../context/ReaderContext";
 import TutorialModal from "../components/TutorialModal.jsx"
+import { useTranslation } from "react-i18next";
+import { dir } from "i18next";
 
 function QuranPage() {
 
@@ -21,6 +23,8 @@ function QuranPage() {
     setResult,
     fetchQuranSurah
   } = QuranHook();
+
+  const { t, i18n } = useTranslation('surah');
 
   useEffect(() => {
     const seen = localStorage.getItem("tutorial_seen");
@@ -115,7 +119,7 @@ function QuranPage() {
               className="px-3 py-2 sm:px-6 rounded-xl sm:py-3 text-lg transition flex-1"
               style={{ background: theme.card, color: theme.cardtext }}
             >
-              {selectedSurah ? `Surah Number ${selectedSurah}` : "Select a Surah"}
+              {selectedSurah ? t('quranPage.surahNumber', { number: selectedSurah }) : t('quranPage.selectSurah')}
             </button>
 
             {selectedSurah && (
@@ -170,7 +174,7 @@ function QuranPage() {
                 className="text-2xl md:text-3xl font-bold mb-3"
                 style={{ color: theme.navbarlogo }}
               >
-                Welcome to the Holy Quran Section
+                {t('quranPage.welcome.title')}
               </h2>
 
               {/* Description */}
@@ -178,26 +182,20 @@ function QuranPage() {
                 className="text-base md:text-lg leading-relaxed opacity-90 mb-4"
                 style={{ color: theme.cardtext }}
               >
-                Select a Surah from the list to explore its verses and reflect on their meanings in a peaceful reading experience.
+                {t('quranPage.welcome.description')}
               </p>
 
               {/* API note */}
               <p
                 className="text-sm opacity-70"
                 style={{ color: theme.cardtext }}
-              >
-                This app uses{" "}
-                <a
-                  href="https://alquran.cloud/api"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline underline-offset-2 font-medium"
-                  style={{ color: theme.navbarlogo }}
-                >
-                  AlQuran.cloud API
-                </a>{" "}
-                to fetch Quran data.
-              </p>
+                dangerouslySetInnerHTML={{
+                  __html: t('quranPage.welcome.apiNote', {
+                    themeColor: theme.navbarlogo,
+                    direction: dir(i18n.language)
+                  })
+                }}
+              />
 
               {/* Divider */}
               <div
@@ -219,7 +217,7 @@ function QuranPage() {
                   className="px-6 py-3 rounded-lg font-medium shadow-md md:text-base text-xs transition-all duration-300 hover:scale-[1.03] active:scale-95"
                   style={{ background: theme.navbaractivelink, color: "#fff" }}
                 >
-                  📍 Continue Reading (Ayah {savedProgress.ayah} Surah {savedProgress.surah})
+                  {t('quranPage.continueReading', { ayah: savedProgress.ayah, surah: savedProgress.surah })}
                 </button>
               )}
 
@@ -231,7 +229,7 @@ function QuranPage() {
         {selectedSurah && (
           <div className="w-full mx-auto md:p-6 p-4 md:rounded-[36px] rounded-[28px] shadow"
             style={{ background: theme.card }}>
-            {loading && <p className="text-center" style={{ color: theme.cardtext }}>Loading...</p>}
+            {loading && <p className="text-center" style={{ color: theme.cardtext }}>{t('quranPage.loading')}</p>}
             {error && <p className="text-center text-red-600">{error}</p>}
             {result && (
               <SurahView

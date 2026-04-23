@@ -1,0 +1,29 @@
+{
+    "surah": {
+        "player": {
+            "play": "🎧 Play Surah",
+            "pause": "🎧 Pause Surah"
+        },
+        "goToAyah": "📍 Click to go to verse {{current}} of {{total}}",
+        "progress": {
+            "savedTitle": "Progress Saved",
+            "savedText": "Your progress was saved successfully!",
+            "errorText": "Failed to save progress",
+            "confirm": "OK"
+        },
+        "bismillahAlt": "In the name of Allah, the Most Gracious, the Most Merciful"
+    },
+    "quranPage": {
+        "selectSurah": "Select a Surah",
+        "surahNumber": "Surah Number {{number}}",
+        "welcome": {
+            "title": "Welcome to the Holy Quran Section",
+            "description": "Select a Surah from the list to explore its verses and reflect on their meanings in a peaceful reading experience.",
+            "apiNote": " This app uses <a href='https://alquran.cloud/api' target='_blank' rel='noopener noreferrer' class='underline underline-offset-2 font-medium' style='color:{{themeColor}};'> AlQuran.cloud API </a> to fetch Quran data."
+        },
+        "continueReading": "📍 Continue Reading (Ayah {{ayah}} Surah {{surah}})",
+        "loading": "Loading...",
+        "backToTop": "Back to Top",
+        "help": "Help"
+    }
+}

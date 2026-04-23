@@ -1,0 +1,24 @@
+{
+    "landing": {
+        "addTaskPlaceholder": "Ajouter une nouvelle tâche...",
+        "addButton": "Ajouter",
+        "loading": "Chargement des tâches...",
+        "noTasks": "Aucune tâche pour le moment 😴",
+        "startTask": "Commencez par ajouter votre première tâche",
+        "table": {
+            "task": "Tâche",
+            "status": "Statut",
+            "actions": "Actions"
+        },
+        "status": {
+            "completed": "Terminée",
+            "pending": "En cours"
+        },
+        "buttons": {
+            "toggle": "Changer",
+            "delete": "Supprimer",
+            "update": "Mettre à jour"
+        },
+        "confirmDelete": "Supprimer cette tâche ?"
+    }
+}

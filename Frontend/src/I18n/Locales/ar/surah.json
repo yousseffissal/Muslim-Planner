@@ -1,0 +1,29 @@
+{
+    "surah": {
+        "player": {
+            "play": "🎧 تشغيل السورة",
+            "pause": "🎧 إيقاف السورة"
+        },
+        "goToAyah": "📍 اضغط للذهاب إلى الآية {{current}} من {{total}}",
+        "progress": {
+            "savedTitle": "تم حفظ التقدم",
+            "savedText": "تم حفظ تقدمك بنجاح!",
+            "errorText": "فشل في حفظ التقدم",
+            "confirm": "حسناً"
+        },
+        "bismillahAlt": "بسم الله الرحمن الرحيم"
+    },
+    "quranPage": {
+        "selectSurah": "اختر سورة",
+        "surahNumber": "سورة رقم {{number}}",
+        "welcome": {
+            "title": "مرحباً بك في قسم القرآن الكريم",
+            "description": "اختر سورة من القائمة لاستكشاف آياتها والتأمل في معانيها في تجربة قراءة هادئة.",
+            "apiNote": "يستخدم هذا التطبيق <a href='https://alquran.cloud/api' target='_blank' rel='noopener noreferrer' class='underline underline-offset-2 font-medium' style='color:{{themeColor}};'> واجهة AlQuran.cloud API </a> لجلب بيانات القرآن الكريم."
+        },
+        "continueReading": "📍 متابعة القراءة (الآية {{ayah}} من السورة {{surah}})",
+            "loading": "جاري التحميل...",
+            "backToTop": "العودة للأعلى",
+            "help": "مساعدة"
+        }
+    }

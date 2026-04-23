@@ -9,6 +9,7 @@ import successIcon from "../assets/success.png";
 import { useTheme } from "../context/ThemeContext";
 import QuranReaderSelector from "./Readers.jsx";
 import { useReader } from "../context/ReaderContext";
+import { useTranslation } from "react-i18next";
 
 function SurahView({ surahView }) {
   const [surah, setSurah] = useState();
@@ -18,6 +19,7 @@ function SurahView({ surahView }) {
   const { theme, mode } = useTheme();
   const audioRef = useRef(null);
   const { selectedReader } = useReader();
+  const { t } = useTranslation('surah');
 
   // تشغيل وإيقاف الصوت
   const togglePlay = () => {
@@ -130,7 +132,7 @@ function SurahView({ surahView }) {
           {/* محتوى الصوت */}
           <div className="relative z-10 w-full flex flex-col items-center">
             <h2 className="font-bold text-lg mb-4 text-center" style={{ color: theme.navbarlogo }}>
-              {!isPlaying ? "🎧 تشغيل السورة" : "🎧 إيقاف السورة"}
+              {!isPlaying ? t("surah.player.play") : t("surah.player.pause")}
             </h2>
 
             <audio ref={audioRef} onEnded={handleEnded} className="w-full rounded-lg">
@@ -166,7 +168,7 @@ function SurahView({ surahView }) {
                 if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
               }}
             >
-              📍 اضغط للذهاب إلى الآية {currentAyahIndex + 1} من {surah.ayahs.length}
+              {t("surah.goToAyah", {current: currentAyahIndex + 1,total: surah.ayahs.length})}
             </div>
             <QuranReaderSelector />
           </div>
@@ -210,8 +212,8 @@ function SurahView({ surahView }) {
 
                     // عرض رسالة نجاح باستخدام SweetAlert2
                     await Swal.fire({
-                      title: "Progress Saved",
-                      text: "Your progress was saved successfully!",
+                      title: t("surah.progress.savedTitle"),
+                      text: t("surah.progress.savedText"),
                       imageUrl: successIcon,
                       imageWidth: 80,   // العرض
                       imageHeight: 80,  // الارتفاع
@@ -239,9 +241,9 @@ function SurahView({ surahView }) {
                     console.error("Failed to save progress", error);
                     // رسالة خطأ عند الفشل
                     Swal.fire({
-                      text: "Failed to save progress",
+                      text: t("surah.progress.errorText"),
                       icon: "error",
-                      confirmButtonText: "OK",
+                      confirmButtonText: t("surah.progress.confirm"),
                       customClass: {
                         popup: "swal-popup-red",
                         title: "swal-title-red",

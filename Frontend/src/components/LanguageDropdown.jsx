@@ -21,7 +21,6 @@ export default function LanguageDropdown() {
     setOpen(false);
   };
 
-  // إغلاق عند الضغط خارج الـ dropdown
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -34,7 +33,6 @@ export default function LanguageDropdown() {
 
   return (
     <div className="relative w-full" ref={dropdownRef}>
-      {/* زر العلم فقط - responsive */}
       <button
         onClick={() => setOpen(!open)}
         className="w-6 h-6 navbar:w-10 navbar:h-10 rounded-full overflow-hidden shadow-sm hover:shadow-md transition duration-300 bg-white flex items-center justify-center"

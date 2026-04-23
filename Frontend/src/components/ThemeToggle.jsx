@@ -1,5 +1,5 @@
 import { useTheme } from "../context/ThemeContext";
-import { motion, AnimatePresence } from "framer-motion"; // لإضافة حركات لطيفة
+import { motion, AnimatePresence } from "framer-motion";
 
 function ThemeToggle() {
   const { toggleTheme, mode } = useTheme();
@@ -7,7 +7,7 @@ function ThemeToggle() {
   return (
     <motion.button
       onClick={toggleTheme}
-      whileTap={{ scale: 0.95 }} // تأثير الضغط
+      whileTap={{ scale: 0.95 }}
       className={`flex w-full justify-center items-center gap-2 px-4 py-2 rounded-xl shadow-md transition-colors duration-500`}
       style={{
         background: mode === "light" ? "#111827" : "#f9fafb",
@@ -15,12 +15,12 @@ function ThemeToggle() {
       }}
     >
       <motion.span
-        key={mode} // يتيح إعادة التحريك عند التبديل
+        key={mode}
         initial={{ rotate: 0, opacity: 0 }}
         animate={{ rotate: 360, opacity: 1 }}
         exit={{ rotate: -360, opacity: 0 }}
         transition={{ duration: 0.5 }}
-        className="text-base sm:text-lg" // حجم متناسب مع الزر
+        className="text-base sm:text-lg"
       >
         {mode === "light" ? "🌙" : "☀️"}
       </motion.span>
@@ -33,7 +33,7 @@ export default ThemeToggle;
 /*import { useTheme } from "../context/ThemeContext";
 
 function ThemeToggle() {
-  const { toggleTheme, mode } = useTheme(); // جلب theme الحالي أيضًا
+  const { toggleTheme, mode } = useTheme();
 
   return (
     <button

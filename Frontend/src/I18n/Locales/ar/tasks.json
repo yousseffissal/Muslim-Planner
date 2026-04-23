@@ -1,0 +1,24 @@
+{
+    "landing": {
+        "addTaskPlaceholder": "أضف مهمة جديدة...",
+        "addButton": "إضافة",
+        "loading": "جاري تحميل المهام...",
+        "noTasks": "لا توجد مهام بعد 😴",
+        "startTask": "ابدأ بإضافة أول مهمة لك",
+        "table": {
+            "task": "المهمة",
+            "status": "الحالة",
+            "actions": "الإجراءات"
+        },
+        "status": {
+            "completed": "مكتملة",
+            "pending": "قيد الانتظار"
+        },
+        "buttons": {
+            "toggle": "تغيير",
+            "delete": "حذف",
+            "update": "تحديث"
+        },
+        "confirmDelete": "هل تريد حذف هذه المهمة؟"
+    }
+}

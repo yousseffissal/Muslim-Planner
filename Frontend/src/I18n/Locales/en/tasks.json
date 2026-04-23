@@ -1,0 +1,24 @@
+{
+    "landing": {
+        "addTaskPlaceholder": "Add a new task...",
+        "addButton": "Add",
+        "loading": "Loading tasks...",
+        "noTasks": "No tasks yet 😴",
+        "startTask": "Start by adding your first task",
+        "table": {
+            "task": "Task",
+            "status": "Status",
+            "actions": "Actions"
+        },
+        "status": {
+            "completed": "Completed",
+            "pending": "Pending"
+        },
+        "buttons": {
+            "toggle": "Toggle",
+            "delete": "Delete",
+            "update": "Update"
+        },
+        "confirmDelete": "Delete this task?"
+    }
+}
