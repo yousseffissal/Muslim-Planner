@@ -30,7 +30,11 @@ export const themes = {
 
         AdhanRed: "#991b1b",
 
-        popups: "#ffffff"
+        popups: "#ffffff",
+
+        tasktableheader: "#c9f0c9",
+
+        tablebuttonmenu: "#f7faf7",
     },
     dark: {
         navbar: "#1e1e1e",
@@ -63,7 +67,11 @@ export const themes = {
 
         AdhanRed: "#ef4444",
 
-        popups: "#222224"
+        popups: "#222224",
+
+        tasktableheader: "#1e1e1e",
+
+         tablebuttonmenu: "#2a2a2b",
     },
 
     gold: {
