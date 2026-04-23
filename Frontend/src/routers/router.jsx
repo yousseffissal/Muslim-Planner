@@ -10,6 +10,7 @@ import LandingPage from "../pages/Landing.jsx";
 import Login from "../pages/Login.jsx";
 import Register from "../pages/Register.jsx";
 import PrivateRoute from "../components/PrivateRoute.jsx";
+import TasksPage from "../pages/Tasks.jsx";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
           {
             path: "quran",
             element: <QuranPage />
+          },
+          {
+            path: "schedule",
+            element: <TasksPage />
           },
           {
             path: "about",
