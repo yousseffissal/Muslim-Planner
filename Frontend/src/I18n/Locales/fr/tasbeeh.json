@@ -1,0 +1,12 @@
+{
+  "tasbeeh": {
+    "title": "Tasbeeh Numérique",
+    "completedCycles": "Cycles Terminés",
+    "complete": "terminé",
+    "resetAll": "Réinitialiser",
+    "pressHint": "Appuyez sur le bouton ou utilisez Espace/Entrée",
+    "muteSound": "Couper le son",
+    "enableSound": "Activer le son",
+    "toggleTheme": "Changer le thème"
+  }
+}

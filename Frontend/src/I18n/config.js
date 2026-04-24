@@ -46,6 +46,10 @@ import enTasks from "./Locales/en/tasks.json";
 import arTasks from "./Locales/ar/tasks.json";
 import frTasks from "./Locales/fr/tasks.json";
 
+import enTasbeeh from "./Locales/en/tasbeeh.json";
+import arTasbeeh from "./Locales/ar/tasbeeh.json";
+import frTasbeeh from "./Locales/fr/tasbeeh.json";
+
 import enSurah from "./Locales/en/surah.json";
 import arSurah from "./Locales/ar/surah.json";
 import frSurah from "./Locales/fr/surah.json";
@@ -68,6 +72,7 @@ i18n
                 error: enError,
                 common: enCommon,
                 tasks: enTasks,
+                tasbeeh: enTasbeeh,
                 surah: enSurah
             },
             ar: {
@@ -81,6 +86,7 @@ i18n
                 error: arError,
                 common: arCommon,
                 tasks: arTasks,
+                tasbeeh: arTasbeeh,
                 surah: arSurah
             },
             fr: {
@@ -94,11 +100,12 @@ i18n
                 error: frError,
                 common: frCommon,
                 tasks: frTasks,
+                tasbeeh: frTasbeeh,
                 surah: frSurah
             }
         },
 
-        ns: ["landing", "welcome", "auth", "adhan", "links", "footer", "tutorial", "error", "common", "tasks", "surah"],
+        ns: ["landing", "welcome", "auth", "adhan", "links", "footer", "tutorial", "error", "common", "tasks", "tasbeeh", "surah"],
         defaultNS: "landing",
         interpolation: {
             escapeValue: false,

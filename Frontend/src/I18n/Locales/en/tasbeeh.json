@@ -1,0 +1,12 @@
+{
+  "tasbeeh": {
+    "title": "Digital Tasbeeh",
+    "completedCycles": "Completed Cycles",
+    "complete": "complete",
+    "resetAll": "Reset All",
+    "pressHint": "Press the button or use Space/Enter key",
+    "muteSound": "Mute sound",
+    "enableSound": "Enable sound",
+    "toggleTheme": "Toggle theme"
+  }
+}

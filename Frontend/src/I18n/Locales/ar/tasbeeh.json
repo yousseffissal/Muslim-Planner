@@ -1,0 +1,12 @@
+{
+  "tasbeeh": {
+    "title": "التسبيح الرقمي",
+    "completedCycles": "الدورات المكتملة",
+    "complete": "مكتمل",
+    "resetAll": "إعادة تعيين الكل",
+    "pressHint": "اضغط على الزر أو استخدم Space/Enter",
+    "muteSound": "كتم الصوت",
+    "enableSound": "تفعيل الصوت",
+    "toggleTheme": "تبديل السمة"
+  }
+}
