@@ -11,6 +11,8 @@ import Login from "../pages/Login.jsx";
 import Register from "../pages/Register.jsx";
 import PrivateRoute from "../components/PrivateRoute.jsx";
 import TasksPage from "../pages/Tasks.jsx";
+import UserProfile from "../components/UserProfile.jsx";
+import TasbeehPage from "../pages/TasbeehPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -53,10 +55,18 @@ const router = createBrowserRouter([
             path: "schedule",
             element: <TasksPage />
           },
-          {
-            path: "about",
-            element: <OwnerPage />
-          },
+            {
+              path: "about",
+              element: <OwnerPage />
+            },
+            {
+              path: "adkar",
+              element: <UserProfile />
+            },
+            {
+              path: "tasbih",
+              element: <TasbeehPage />
+            }
         ]
       }
     ]
